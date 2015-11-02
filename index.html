@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>V is for Vector</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Audiowide|Coda|Nova+Square' rel='stylesheet' type='text/css'>
+  <script src="jquery-1.11.3.min.js"></script>
+  <script src="jquery-ui.min.js"></script>
+</head>
+
+<body>
+  <header class="l-main-header-col-12">
+    <section class="m-main-title-section">
+      <h1>V</h1>
+      <h2>is for <span class="in-ltr-orange">V</span>ector</h2>
+    </section>
+    <nav class="m-header-nav">
+      <ul>
+        <!-- @todo proofread id and class names for mobile/desktop only stuff -->
+        <li class="s-calc-link"><a href="javascript: void(0);" id="mob-calc-menu-open-btn">
+          <span class="in-ltr-orange">C</span>alculators</a></li>
+        <li class="s-mob-ftrs"><a href="#mob-features"><span class="in-ltr-orange">F</span>eatures</a></li>
+        <li class="s-dsktp-ftrs"><a href="#dsktp-features"><span class="in-ltr-orange">F</span>eatures</a></li>
+        <li class="s-mob-about"><a href="#mob-about"><span class="in-ltr-orange">A</span>bout</a></li>
+        <li class="s-dsktp-about"><a href="#dsktp-about"><span class="in-ltr-orange">A</span>bout</a></li>
+        <li class="s-links-btn"><a href="#links"><span class="in-ltr-orange">L</span>inks</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="mob-calc-menu" class="s-mob-calc-menu-col-">
+    <article class="m-mob-calc-menu-box">
+      <header>
+        <h3><span class="in-ltr-orange">C</span>alculators</h3>
+        <a href="javascript: void(0);" id="mob-calc-menu-close" class="m-mob-menu-close">X</a>
+      </header>
+      <ul><!-- @todo make sure to add the jumps in later -->
+        <li><a href="#" class="m-mob-calc-menu-btn"><span class="in-ltr-blue">A</span>ddition</a></li>
+        <li><a href="#subtraction" class="m-mob-calc-menu-btn"><span class="in-ltr-blue">S</span>ubtraction</a></li>
+        <li><a href="#scalar-mult" class="m-mob-calc-menu-btn"><span class="in-ltr-blue">S</span>calar 
+          Multiplication</a></li>
+        <li><a href="#magnitude" class="m-mob-calc-menu-btn"><span class="in-ltr-blue">M</span>agnitude</a></li>
+        <li><a href="#dot-product" class="m-mob-calc-menu-btn"><span class="in-ltr-blue">D</span>ot 
+          Product</a></li>
+        <li><a href="#cross-product" class="m-mob-calc-menu-btn"><span class="in-ltr-blue">C</span>ross 
+          Product</a></li>
+        <li><a href="#angle" class="m-mob-calc-menu-btn"><span class="in-ltr-blue">A</span>ngle 
+          Between Two Vectors</a></li>
+      </ul>
+    </article>
+  </section>
+  <section id="workspace" class="l-workspace-col-11">
+    <nav class="m-workspace-nav">
+      <a href="javascript: void(0);" id="dsktp-calc-menu-btn">
+        <span class="in-ltr-orange">C</span>alculators</a>
+      <ul id="dsktp-calc-menu">
+        <li><a href="javascript: void(0);" id="dsktp-vec-add-btn" class="m-dsktp-calc-link">
+          <span class="in-ltr-blue">A</span>ddition</a></li>
+        <li><a href="javascript: void(0);" id="dsktp-vec-sub-btn" class="m-dsktp-calc-link">
+          <span class="in-ltr-blue">S</span>ubtraction</a></li>
+        <li><a href="javascript: void(0);" id="dsktp-scal-mult-btn" class="m-dsktp-calc-link">
+          <span class="in-ltr-blue">S</span>calar Multiplication</a></li>
+        <li><a href="javascript: void(0);" id="dsktp-mag-btn" class="m-dsktp-calc-link">
+          <span class="in-ltr-blue">M</span>agnitude</a></li>
+        <li><a href="javascript: void(0);" id="dsktp-dot-btn" class="m-dsktp-calc-link">
+          <span class="in-ltr-blue">D</span>ot Product</a></li>
+        <li><a href="javascript: void(0);" id="dsktp-cross-btn" class="m-dsktp-calc-link">
+          <span class="in-ltr-blue">C</span>ross Product</a></li>
+        <li><a href="javascript: void(0);" id="dsktp-angle-btn" class="m-dsktp-calc-link">
+          <span class="in-ltr-blue">A</span>ngle Between Two Vectors</a></li>
+        <li><a href="#javascript: void(0);" id="dsktp-calc-menu-up" class="m-menu-up-link">
+          <img src="menu-up.svg" alt="up arrow"/></span></a></li>
+      </ul>
+    </nav>
+    <article id="workspace-instruct-win" class="m-dsktp-instruct-win-col-6">
+      <header>
+        <h3><span class="in-ltr-orange">T</span>o Get Started:</h3>
+      </header>   
+      <ul>
+        <li>Click the Calculators button to open the selection menu.</li>
+        <li>Select the calculators you need to add them to the workspace.</li>
+        <li>Arrange the calculators by clicking the calculator header and dragging.</li>
+      </ul>
+    </article>
+  </section>
+  <section id="vec-add-win" class="m-def-calc-win-col-4"><!-- @todo adjust these col sizes for desktops -->
+    <header>
+      <h3><span class="in-ltr-orange">V</span>ector Addition</h3>
+      <a href="javascript: void(0);" id="vec-add-win-close" class="m-calc-win-close">X</a>
+    </header>
+    <article class="m-calc-win-def-btn">
+      <a href="javascript: void(0);" id="vec-add-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+    </article>
+    <article id="vec-add-def-win" class="m-def-win">
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> <b>&#9002;</b></p>
+      <p>and</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , b<sub>2</sub> 
+        <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> + <span class="in-ltr-blue">b</span> = 
+        <b>&#9001;</b> a<sub>1</sub> + b<sub>1</sub> , a<sub>2</sub> + b<sub>2</sub> <b>&#9002;</b>.</p>
+      <br>
+      <br>
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b></p>
+      <p>and</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
+        b<sub>2</sub> , b<sub>3</sub> <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> + <span class="in-ltr-blue">b</span> =
+        <br> 
+        &emsp;<b>&#9001;</b> a<sub>1</sub> + b<sub>1</sub> , a<sub>2</sub> + b<sub>2</sub> ,
+        a<sub>3</sub> + b<sub>3</sub> <b>&#9002;</b>.</p>   
+      <footer>
+        <a href="javascript: void(0);" id="vec-add-def-win-close"><span class="in-ltr-blue">C</span>lose</a>
+      </footer>
+    </article>
+    <article class="m-calc-content-win">
+      <form id="twoD-vAdd-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong> 
+        <input id="twoD-vAdd-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> ,
+        <input id="twoD-vAdd-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input>
+        <strong>&#9002;</strong><br> 
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <input id="twoD-vAdd-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> ,
+        <input id="twoD-vAdd-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> 
+          <strong>&#9002;</strong><br> 
+        <button id="twoD-vAdd-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="twoD-vAdd-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <span class="in-ltr-orange">a</span> + <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>  
+        <input id="twoD-vAdd-solOne-out" type="text"></input> , <input id="twoD-vAdd-solTwo-out" type="text"></input>
+          <strong>&#9002;</strong><br> 
+      </form>
+      <hr>
+      <form id="threeD-vAdd-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong>
+        <input id="threeD-vAdd-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> , 
+        <input id="threeD-vAdd-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input> ,
+        <input id="threeD-vAdd-aThree-in" class="m-orange-focus" type="number" placeholder="a3"</input> 
+          <strong>&#9002;</strong><br>
+        <a name="subtraction"></a><!-- sub win anchor -->
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <input id="threeD-vAdd-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> , 
+        <input id="threeD-vAdd-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> , 
+        <input id="threeD-vAdd-bThree-in" class="m-blue-focus" type="number" placeholder="b3"></input> 
+          <strong>&#9002;</strong><br>
+        <button id="threeD-vAdd-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="threeD-vAdd-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <div class="m-threeOut-box">
+          <p><span class="in-ltr-orange">a</span> + <span class="in-ltr-blue">b</span> =</p>
+          &emsp;<strong>&#9001;</strong>
+          <input id="threeD-vAdd-solOne-out" type="text"></input> , 
+          <input id="threeD-vAdd-solTwo-out" type="text"></input> ,
+          <input id="threeD-vAdd-solThree-out" type="text"></input> <strong>&#9002;</strong>
+        </div>
+      </form>
+    </article>
+  </section>
+  <section id="vec-sub-win" class="m-def-calc-win-col-4"> <!-- @todo adjust col size for desktops -->
+    <header>
+      <h3><span class="in-ltr-orange">V</span>ector Subtraction</h3>
+      <a href="javascript: void(0);" id="vec-sub-win-close" class="m-calc-win-close">X</a>
+    </header>
+    <article class="m-calc-win-def-btn">
+      <a href="javascript: void(0);" id="vec-sub-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+    </article>
+    <article id="vec-sub-def-win" class="m-def-win">
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> <b>&#9002;</b></p>
+      <p>and</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
+        b<sub>2</sub> <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> - <span class="in-ltr-blue">b</span> = 
+        <b>&#9001;</b> a<sub>1</sub> - b<sub>1</sub> , a<sub>2</sub> - b<sub>2</sub> <b>&#9002;</b>.</p>
+      <br>
+      <br>
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b></p>
+      <p>and</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
+        b<sub>2</sub> , b<sub>3</sub> <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> - <span class="in-ltr-blue">b</span> = 
+       <br>&emsp;<b>&#9001;</b> a<sub>1</sub> - b<sub>1</sub> , a<sub>2</sub> - b<sub>2</sub> , 
+        a<sub>3</sub> - b<sub>3</sub> <b>&#9002;</b>.</p>
+      <footer>
+       <a href="javascript: void(0);" id="vec-sub-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+      </footer>
+    </article>
+    <article class="m-calc-content-win">
+      <form id="twoD-vSub-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong> 
+        <input id="twoD-vSub-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> ,
+        <input id="twoD-vSub-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input>
+        <strong>&#9002;</strong><br> 
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <input id="twoD-vSub-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> ,
+        <input id="twoD-vSub-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> 
+          <strong>&#9002;</strong><br> 
+        <button id="twoD-vSub-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="twoD-vSub-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <span class="in-ltr-orange">a</span> - <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>  
+        <input id="twoD-vSub-solOne-out" type="text"></input> , <input id="twoD-vSub-solTwo-out" type="text"></input>
+          <strong>&#9002;</strong><br> 
+      </form>
+      <hr>
+      <form id="threeD-vSub-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong>
+        <input id="threeD-vSub-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> , 
+        <input id="threeD-vSub-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input> ,
+        <input id="threeD-vSub-aThree-in" class="m-orange-focus" type="number" placeholder="a3"</input> 
+          <strong>&#9002;</strong><br>
+        <a name="scalar-mult"></a><!-- scalar mult win anchor -->
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <input id="threeD-vSub-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> , 
+        <input id="threeD-vSub-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> , 
+        <input id="threeD-vSub-bThree-in" class="m-blue-focus" type="number" placeholder="b3"></input> 
+          <strong>&#9002;</strong><br>
+        <button id="threeD-vSub-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="threeD-vSub-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <div class="m-threeOut-box">
+          <p><span class="in-ltr-orange">a</span> - <span class="in-ltr-blue">b</span> =</p>
+          &emsp;<strong>&#9001;</strong>
+          <input id="threeD-vSub-solOne-out" type="text"></input> , 
+          <input id="threeD-vSub-solTwo-out" type="text"></input> ,
+          <input id="threeD-vSub-solThree-out" type="text"></input> <strong>&#9002;</strong>
+        </div>
+      </form>
+    </article>
+  </section>
+  <section id="vec-scal-mult-win" class="m-def-calc-win-col-4"> <!-- @todo adjust col size for desktops -->
+    <header>
+      <h3><span class="in-ltr-orange">S</span>calar Multiplication</h3>
+      <a href="javascript: void(0);" id="vec-scal-mult-win-close" class="m-calc-win-close">X</a>
+    </header>
+    <article class="m-calc-win-def-btn">
+      <a href="javascript: void(0);" id="vec-scal-mult-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+    </article>
+    <article id="vec-scal-mult-def-win" class="m-def-win">
+      <p>Let</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-green">c</span> be a scalar</p>
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-blue">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b><p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-green">c</span><span class="in-ltr-blue">a</span> = 
+        <b>&#9001;</b> <span class="in-ltr-green">c</span>a<sub>1</sub> , 
+        <span class="in-ltr-green">c</span>a<sub>2</sub> , <span class="in-ltr-green">c</span>a<sub>3</sub>
+        <b>&#9002;</b> .</p>
+      <footer>
+       <a href="javascript: void(0);" id="vec-scal-mult-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+      </footer>
+    </article>
+    <article class="m-calc-content-win">
+      <form id="twoD-scal-mult-calc">
+        <span class="in-ltr-green">c</span> = 
+        <input id="twoD-vScal-mult-c-in" class="m-green-focus" type="number" placeholder="c"></input><br>
+        <span class="in-ltr-blue">a</span> = <strong>&#9001;</strong> 
+        <input id="twoD-vScal-mult-aOne-in" class="m-blue-focus" type="number" placeholder="a1"></input> ,
+        <input id="twoD-vScal-mult-aTwo-in" class="m-blue-focus" type="number" placeholder="a2"></input>
+        <strong>&#9002;</strong><br> 
+        <button id="twoD-vScal-mult-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="twoD-vScal-mult-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <div class="m-special-scalmult-box">
+          <span class="in-green-no-pad">c</span><span class="in-blue-no-pad">a</span>
+        </div>
+        = <strong>&#9001;</strong>  
+        <input id="twoD-vScal-mult-solOne-out" type="text"></input> ,
+        <input id="twoD-vScal-mult-solTwo-out" type="text"></input>
+          <strong>&#9002;</strong><br> 
+      </form>
+      <hr>
+      <form id="threeD-scal-mult-calc">
+        <a name="magnitude"></a><!-- magnitude anchor -->
+        <span class="in-ltr-green">c</span> = 
+        <input id="threeD-vScal-mult-c-in" class="m-green-focus" type="number" placeholder="c"></input><br>
+        <span class="in-ltr-blue">a</span> = <strong>&#9001;</strong>
+        <input id="threeD-vScal-mult-aOne-in" class="m-blue-focus" type="number" placeholder="a1"></input> , 
+        <input id="threeD-vScal-mult-aTwo-in" class="m-blue-focus" type="number" placeholder="a2"></input> ,
+        <input id="threeD-vScal-mult-aThree-in" class="m-blue-focus" type="number" placeholder="a3"</input> 
+          <strong>&#9002;</strong><br>
+        <button id="threeD-vScal-mult-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="threeD-vScal-mult-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <div class="m-special-scalmult-box">
+          <span class="in-green-no-pad">c</span><span class="in-blue-no-pad">a</span>
+        </div>
+        = <strong>&#9001;</strong>  
+        <input id="threeD-vScal-mult-solOne-out" type="text"></input> ,
+        <input id="threeD-vScal-mult-solTwo-out" type="text"></input> , 
+        <input id="threeD-vScal-mult-solThree-out" type="text"></input>
+          <strong>&#9002;</strong><br> 
+      </form>
+    </article>
+  </section>
+  <section id="vec-mag-win" class="m-def-calc-win-col-4"> <!-- @todo adjust col size for desktops -->
+    <header>
+      <h3><span class="in-ltr-orange">M</span>agnitude</h3>
+      <a href="javascript: void(0);" id="vec-mag-win-close" class="m-calc-win-close">X</a>
+    </header>
+    <article class="m-calc-win-def-btn">
+      <a href="javascript: void(0);" id="vec-mag-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+    </article>
+    <article id="vec-mag-def-win" class="m-def-win">
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> = 
+        sqrt( a<sub>1</sub><sup>2</sup> + a<sub>2</sub><sup>2</sup> ) </p>
+      <br>
+      <br>
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> =  
+      sqrt( a<sub>1</sub><sup>2</sup> + a<sub>2</sub><sup>2</sup> + a<sub>3</sub><sup>2</sup> )</p> 
+      <footer>
+       <a href="javascript: void(0);" id="vec-mag-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+      </footer>
+    </article>
+    <article class="m-calc-content-win">
+      <form id="twoD-mag-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong> 
+        <input id="twoD-mag-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> ,
+        <input id="twoD-mag-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input>
+        <strong>&#9002;</strong><br> 
+        <button id="twoD-mag-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="twoD-mag-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> = 
+        <input id="twoD-mag-sol-out" type="text"></input>
+        <a name="dot-product"></a><!-- dot-product anchor --> 
+      </form>
+      <hr>
+      <form id="threeD-mag-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong>
+        <input id="threeD-mag-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> , 
+        <input id="threeD-mag-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input> ,
+        <input id="threeD-mag-aThree-in" class="m-orange-focus" type="number" placeholder="a3"</input> 
+          <strong>&#9002;</strong><br>
+        <button id="threeD-mag-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="threeD-mag-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> = 
+        <input id="threeD-mag-sol-out" type="text"></input>
+      </form>
+    </article>
+  </section>
+  <section id="vec-dot-win" class="m-def-calc-win-col-4"> 
+    <header>
+      <h3><span class="in-ltr-orange">D</span>ot Product</h3>
+      <a href="javascript: void(0);" id="vec-dot-win-close" class="m-calc-win-close">X</a>
+    </header>
+    <article class="m-calc-win-def-btn">
+      <a href="javascript: void(0);" id="vec-dot-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+    </article>
+    <article id="vec-dot-def-win" class="m-def-win">
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> <b>&#9002;</b></p>
+      <p>and</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
+        b<sub>2</sub> <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> <span class="in-dot">&middot;</span>
+        <span class="in-ltr-blue">b</span> = a<sub>1</sub>b<sub>1</sub> + a<sub>2</sub>b<sub>2</sub>.</p>
+      <br>
+      <br>
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b></p>
+      <p>and</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
+        b<sub>2</sub> , b<sub>3</sub> <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> <span class="in-dot">&middot;</span>
+       <span class="in-ltr-blue">b</span> = 
+       </b> a<sub>1</sub>b<sub>1</sub> + a<sub>2</sub>b<sub>2</sub> + 
+       a<sub>3</sub>b<sub>3</sub>.</p>
+      <footer>
+       <a href="javascript: void(0);" id="vec-dot-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+      </footer>
+    </article>
+    <article class="m-calc-content-win">
+      <form id="twoD-dot-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong> 
+        <input id="twoD-dot-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> ,
+        <input id="twoD-dot-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input>
+        <strong>&#9002;</strong><br> 
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <input id="twoD-dot-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> ,
+        <input id="twoD-dot-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> 
+          <strong>&#9002;</strong><br> 
+        <button id="twoD-dot-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="twoD-dot-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <span class="in-ltr-orange">a</span> <div class="in-dot-box">&middot;</div> 
+        <span class="in-ltr-blue">b</span> = 
+        <input id="twoD-dot-out" type="text"></input>
+      </form>
+      <form id="threeD-dot-calc">
+       <hr>
+        <a name="cross-product"></a><!-- cross product win anchor -->
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong>
+        <input id="threeD-dot-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> , 
+        <input id="threeD-dot-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input> ,
+        <input id="threeD-dot-aThree-in" class="m-orange-focus" type="number" placeholder="a3"</input> 
+          <strong>&#9002;</strong><br>
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <input id="threeD-dot-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> , 
+        <input id="threeD-dot-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> , 
+        <input id="threeD-dot-bThree-in" class="m-blue-focus" type="number" placeholder="b3"></input> 
+          <strong>&#9002;</strong><br>
+        <button id="threeD-dot-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="threeD-dot-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <span class="in-ltr-orange">a</span> <div class="in-dot-box">&middot;</div>
+        <span class="in-ltr-blue">b</span> = 
+        <input id="threeD-dot-out" type="text"></input>
+      </form>
+    </article>
+  </section>
+  <section id="vec-cross-win" class="m-def-calc-win-col-4"> <!-- @todo adjust col size for desktops -->
+    <header>
+      <h3><span class="in-ltr-orange">C</span>ross Product</h3>
+      <a href="javascript: void(0);" id="vec-cross-win-close" class="m-calc-win-close">X</a>
+    </header>
+    <article class="m-calc-win-def-btn">
+      <a href="javascript: void(0);" id="vec-cross-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+    </article>
+    <article id="vec-cross-def-win" class="m-def-win">
+      <p>If</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b></p>
+      <p>and</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
+        b<sub>2</sub> , b<sub>3</sub> <b>&#9002;</b></p>
+      <p>then</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> <span class="in-dot">&times;</span>
+      <span class="in-ltr-blue">b</span> = </p> 
+      <div class="m-cross-box">
+        <p>
+          <b>&#9001;</b> a<sub>2</sub>b<sub>3</sub> - a<sub>3</sub>b<sub>2</sub> , a<sub>3</sub>b<sub>1</sub> - 
+          a<sub>1</sub>b<sub>3</sub> , a<sub>1</sub>b<sub>2</sub> - a<sub>2</sub>b<sub>1</sub> <b>&#9002;</b>.</p> 
+        </p>
+      </div>
+      <footer>
+       <a href="javascript: void(0);" id="vec-cross-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+      </footer>
+    </article>
+    <article class="m-calc-content-win">
+      <form id="threeD-cross-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong>
+        <input id="cross-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> , 
+        <input id="cross-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input> ,
+        <input id="cross-aThree-in" class="m-orange-focus" type="number" placeholder="a3"</input> 
+          <strong>&#9002;</strong><br>
+        <a name="angle"></a><!-- angle anchor -->
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <input id="cross-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> , 
+        <input id="cross-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> , 
+        <input id="cross-bThree-in" class="m-blue-focus" type="number" placeholder="b3"></input> 
+          <strong>&#9002;</strong><br>
+        <button id="cross-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="cross-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <div class="m-threeOut-box">
+          <p><span class="in-ltr-orange">a</span> &times; <span class="in-ltr-blue">b</span> =</p>
+          &emsp;<strong>&#9001;</strong>
+          <input id="cross-solOne-out" type="text"></input> , 
+          <input id="cross-solTwo-out" type="text"></input> ,
+          <input id="cross-solThree-out" type="text"></input> <strong>&#9002;</strong>
+        </div>
+      </form>
+    </article>
+  </section>
+  <section id="vec-angle-win" class="m-def-calc-win-col-4"> <!-- @todo adjust col size for desktops -->
+    <header>
+      <h3><span class="in-ltr-orange">A</span>ngle Between <br> <span class="in-ltr-orange">T</span>wo Vectors</h3> 
+      <a href="javascript: void(0);" id="vec-angle-win-close" class="m-calc-win-close">X</a>
+    </header>
+    <article class="m-calc-win-def-btn">
+      <a href="javascript: void(0);" id="vec-angle-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+    </article>
+    <article id="vec-angle-def-win" class="m-def-win">
+      <p>If</p>
+      <p class="m-def-win-highlight">&theta;</p>
+      <p>is the angle between two vectors</p>
+      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> and
+        <span class="in-ltr-blue">b</span></p>
+      <p>then</p>
+      <p class="m-def-win-highlight">&theta; = </p>  
+      <p class="m-def-win-highlight">arccos( (<span class="in-ltr-orange">a</span> &middot;
+        <span class="in-ltr-blue">b</span>) / 
+        (<span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> &middot; <span class="in-ltr-blue">
+        &#124;&#124;b&#124;&#124;</span>) ).
+      </p>
+      <footer>
+       <a href="javascript: void(0);" id="vec-angle-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+      </footer>
+    </article>
+    <article class="m-calc-content-win">
+      <form id="twoD-angle-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong> 
+        <input id="twoD-angle-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> ,
+        <input id="twoD-angle-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input>
+        <strong>&#9002;</strong><br> 
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <input id="twoD-angle-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> ,
+        <input id="twoD-angle-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> 
+          <strong>&#9002;</strong><br> 
+        <button id="twoD-angle-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="twoD-angle-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <span class="m-def-win-highlight">&theta;</span> =   
+        <input id="twoD-angle-sol-out" type="text"></input>
+      </form>
+      <hr>
+      <form id="threeD-angle-calc">
+        <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong>
+        <input id="threeD-angle-aOne-in" class="m-orange-focus" type="number" placeholder="a1"></input> , 
+        <input id="threeD-angle-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"></input> ,
+        <input id="threeD-angle-aThree-in" class="m-orange-focus" type="number" placeholder="a3"</input> 
+          <strong>&#9002;</strong><br>
+        <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
+        <a name="mob-features"></a>
+        <input id="threeD-angle-bOne-in" class="m-blue-focus" type="number" placeholder="b1"></input> , 
+        <input id="threeD-angle-bTwo-in" class="m-blue-focus" type="number" placeholder="b2"></input> , 
+        <input id="threeD-angle-bThree-in" class="m-blue-focus" type="number" placeholder="b3"></input> 
+          <strong>&#9002;</strong><br>
+        <button id="threeD-angle-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
+        <button id="threeD-angle-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br>
+        <span class="m-def-win-highlight">&theta;</span> = 
+        <input id="threeD-angle-sol-out" type="text"></input>
+        <br>
+        <br>
+        NOTE: The solution is given in radians.
+      </form>
+    </article>
+  </section>
+  <a name="dsktp-features"></a><!-- dsktp only anchor -->
+  <header class="m-info-hdr">
+    <h2><span class="in-ltr-orange">F</span>eatures</h2>
+  </header>
+  <section class="l-features">
+    <article class="m-feature-col-3">
+      <header>
+        <h3 id="m-ftr-hdr-one">Vector</h3>
+        <h3>Calculators</h3>
+      </header>
+      <p>V is for Vector includes 7 basic vector operation calculators. Add them to the workspace provided (desktop
+        only), and swap them in and out as the problem changes.</p>
+      <p>In the works: </p>
+      <ul>
+        <li>Projection<br>Calculators</li>
+        <li>Vector<br>Applications</li>
+        <li>Grapher</li>
+      </ul>
+    </article>
+    <article class="m-feature-col-3">
+      <header>
+        <h3 id="m-ftr-hdr-two">Fully</h3>
+        <h3>Responsive</h3>
+      </header>
+      <p>Turn your mobile device into a vector calculator with V is for Vector's responsive design. Adjust your
+        browser window to give yourself more room to work on your desktop.</p>
+    </article>
+    <article class="m-feature-col-3">
+      <header>
+        <h3><span class="in-ltr-green">&#36;</span> Free</h3>
+      </header>
+      <a name="mob-about"></a><!-- mobile anchor -->
+      <p>V is for Vector is free and will remain free throughout any future updates. The code for
+        the calculators is available for use in your own projects and can be found here: (git placeholder) </p>
+    </article>
+  </section>
+  <a name="dsktp-about"></a><!-- dsktp anchor -->
+  <section class="l-about">
+    <header class="m-info-hdr">
+      <h2><span class="in-ltr-orange">A</span>bout</h2>
+    </header>
+    <!-- @todo: desktop about col width -->
+    <article class="m-about-col-">
+      <div class="m-about-content-wrapper">
+        <p>V is for Vector was created to assist college trigonometry and calculus III students in their study of
+        vectors and applications involving vectors. It was <em>not</em> created as a substitute for what can be taught
+        in class by teacher and textbook. There are already many fine websites that explain vectors in great
+        detail.</p> 
+        <p>To the student: </p>
+        <p>Use V is for Vector as a tool to check your work and build confidence as you learn about vectors. Minimal 
+        definitions are provided to help you understand the <em>procedure</em> of vector calculations.</p> 
+      </div>
+    </article>
+  </section>
+  <a name="links"></a><!-- dsktp anchor -->
+  <section class="l-links">
+    <header class="m-info-hdr">
+      <h2><span class="in-ltr-orange">L</span>inks</h2>
+    </header>
+  </section>
+  <footer>
+    <p>Copyright 2015 Evan Vermilyea</p>
+  </footer>
+  <script src="vectors-fd.js"></script> 
+</body>
+
+</html>
