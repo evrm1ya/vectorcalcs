@@ -198,10 +198,10 @@ VECTORS.desktopCalcs = {
     };
   },
   addCalcToWorkspace: function($calcWin) {
-    $calcWin.show().appendTo('#workspace').addClass('workspace-win-position');
+    $calcWin.show().appendTo('#workspace').css({ 'top': '2.9em', 'left': '18em' });
   },
   removeCalcFromWorkspace: function($calcWin) {
-    $calcWin.hide().removeClass('workspace-win-position');
+    $calcWin.hide();
   },
   supply: function() {
     return this.buttonConfig.length;
@@ -210,7 +210,9 @@ VECTORS.desktopCalcs = {
     return {
       part: $button.click(function() { VECTORS.desktopCalcs.addCalcToWorkspace($calcWin); }),
       draggable: $calcWin.draggable({
-        handle: "header"
+        handle: "header",
+        containment: $('#workspace'),
+        stack: this.$allCalcWindows
       })
     };
   },
