@@ -70,7 +70,7 @@ h1 {
 
 h2 {
   margin-top: .5em; 
-  font-size: 1.6em;
+  font-size: 1.5em;
   font-family: 'nova square', helvetica, sans-serif;
   background-color: #515151;
   color: white;
@@ -626,7 +626,7 @@ a {
     display: inline-block;
     overflow: auto;
     position: relative;
-    min-height: 50em;
+    min-height: 80em;
     margin: 2em 0 4.166% 2em;
     box-shadow: 0 0 15px 1px #333;
     background-color: #fff;
@@ -826,7 +826,6 @@ a {
 
   [class*="m-def-calc-win-col-"] {
     display: none;
-    float: left;
     position: absolute;
     min-width: 20em;
   }
@@ -917,8 +916,4 @@ a {
     display: none;
   }
 
-  .workspace-win-position {
-    top: 2.9em;
-    left: 18em;
-  }
 }
