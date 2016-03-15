@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="styles.css" rel="stylesheet" type="text/css">
   <link href='http://fonts.googleapis.com/css?family=Audiowide|Coda|Nova+Square' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <script src='//code.jquery.com/jquery-1.12.0.min.js'></script>
   <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
 </head>
@@ -315,8 +316,10 @@
           <strong>&#9002;</strong><br/> 
         <button id="twoD-vSub-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
         <button id="twoD-vSub-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br/>
-        <span class="in-ltr-orange">a</span> - <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>  
-        <input id="twoD-vSub-solOne-out" type="text"/> , <input id="twoD-vSub-solTwo-out" type="text"></input>
+        <span class="in-ltr-orange">a</span> - <span class="in-ltr-blue">b</span> = 
+        <strong>&#9001;</strong>  
+        <input id="twoD-vSub-solOne-out" type="text"/> , 
+        <input id="twoD-vSub-solTwo-out" type="text"/>
           <strong>&#9002;</strong><br/> 
       </form>
       <hr>
@@ -324,7 +327,7 @@
         <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong>
         <input id="threeD-vSub-aOne-in" class="m-orange-focus" type="number" placeholder="a1"/> , 
         <input id="threeD-vSub-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"/> ,
-        <input id="threeD-vSub-aThree-in" class="m-orange-focus" type="number" placeholder="a3"</input> 
+        <input id="threeD-vSub-aThree-in" class="m-orange-focus" type="number" placeholder="a3"/> 
           <strong>&#9002;</strong><br/>
         <a name="scalar-mult"></a><!-- scalar mult win anchor -->
         <span class="in-ltr-blue">b</span> = <strong>&#9001;</strong>
@@ -350,7 +353,9 @@
       <a href="javascript: void(0);" id="vec-scal-mult-win-close" class="m-calc-win-close">X</a>
     </header>
     <div class="m-calc-win-def-btn">
-      <a href="javascript: void(0);" id="vec-scal-mult-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+      <a href="javascript: void(0);" id="vec-scal-mult-def-btn">
+        <span class="in-ltr-blue">D</span>efinition
+      </a>  
     </div>
     <div id="vec-scal-mult-def-win" class="m-def-win">
       <p>Let</p>
@@ -359,12 +364,17 @@
       <p class="m-def-win-highlight"><span class="in-ltr-blue">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
         a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b><p>
       <p>then</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-green">c</span><span class="in-ltr-blue">a</span> = 
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-green">c</span><span class="in-ltr-blue">a</span> = 
         <b>&#9001;</b> <span class="in-ltr-green">c</span>a<sub>1</sub> , 
-        <span class="in-ltr-green">c</span>a<sub>2</sub> , <span class="in-ltr-green">c</span>a<sub>3</sub>
-        <b>&#9002;</b> .</p>
+        <span class="in-ltr-green">c</span>a<sub>2</sub> , 
+        <span class="in-ltr-green">c</span>a<sub>3</sub>
+        <b>&#9002;</b> .
+      </p>
       <footer>
-       <a href="javascript: void(0);" id="vec-scal-mult-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+        <a href="javascript: void(0);" id="vec-scal-mult-def-win-close">
+          <span class="in-ltr-blue">C</span>lose
+        </a> 
       </footer>
     </div>
     <div class="m-calc-content-win">
@@ -393,7 +403,7 @@
         <span class="in-ltr-blue">a</span> = <strong>&#9001;</strong>
         <input id="threeD-vScal-mult-aOne-in" class="m-blue-focus" type="number" placeholder="a1"/> , 
         <input id="threeD-vScal-mult-aTwo-in" class="m-blue-focus" type="number" placeholder="a2"/> ,
-        <input id="threeD-vScal-mult-aThree-in" class="m-blue-focus" type="number" placeholder="a3"</input> 
+        <input id="threeD-vScal-mult-aThree-in" class="m-blue-focus" type="number" placeholder="a3"/> 
           <strong>&#9002;</strong><br/>
         <button id="threeD-vScal-mult-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
         <button id="threeD-vScal-mult-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br/>
@@ -414,25 +424,37 @@
       <a href="javascript: void(0);" id="vec-mag-win-close" class="m-calc-win-close">X</a>
     </header>
     <div class="m-calc-win-def-btn">
-      <a href="javascript: void(0);" id="vec-mag-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+      <a href="javascript: void(0);" id="vec-mag-def-btn">
+        <span class="in-ltr-blue">D</span>efinition
+      </a>  
     </div>
     <div id="vec-mag-def-win" class="m-def-win">
       <p>If</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
-        a<sub>2</sub> <b>&#9002;</b></p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> <b>&#9002;</b>
+      </p>
       <p>then</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> = 
-        sqrt( a<sub>1</sub><sup>2</sup> + a<sub>2</sub><sup>2</sup> ) </p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> = 
+        sqrt( a<sub>1</sub><sup>2</sup> + a<sub>2</sub><sup>2</sup> ) 
+      </p>
       <br/>
       <br/>
       <p>If</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
-        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b></p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b>
+      </p>
       <p>then</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> =  
-      sqrt( a<sub>1</sub><sup>2</sup> + a<sub>2</sub><sup>2</sup> + a<sub>3</sub><sup>2</sup> )</p> 
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-orange">&#124;&#124;a&#124;&#124;</span> =  
+        sqrt( a<sub>1</sub><sup>2</sup> + a<sub>2</sub><sup>2</sup> + a<sub>3</sub><sup>2</sup> )
+      </p> 
       <footer>
-       <a href="javascript: void(0);" id="vec-mag-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+        <a href="javascript: void(0);" id="vec-mag-def-win-close">
+          <span class="in-ltr-blue">C</span>lose
+        </a> 
       </footer>
     </div>
     <div class="m-calc-content-win">
@@ -452,7 +474,7 @@
         <span class="in-ltr-orange">a</span> = <strong>&#9001;</strong>
         <input id="threeD-mag-aOne-in" class="m-orange-focus" type="number" placeholder="a1"/> , 
         <input id="threeD-mag-aTwo-in" class="m-orange-focus" type="number" placeholder="a2"/> ,
-        <input id="threeD-mag-aThree-in" class="m-orange-focus" type="number" placeholder="a3"</input> 
+        <input id="threeD-mag-aThree-in" class="m-orange-focus" type="number" placeholder="a3"/> 
           <strong>&#9002;</strong><br/>
         <button id="threeD-mag-calc-btn" class="m-calc-btn-orange" type="button">Calculate</button>
         <button id="threeD-mag-rst-btn" class="m-rst-btn-blue" type="button">Reset</button><br/>
@@ -467,33 +489,50 @@
       <a href="javascript: void(0);" id="vec-dot-win-close" class="m-calc-win-close">X</a>
     </header>
     <div class="m-calc-win-def-btn">
-      <a href="javascript: void(0);" id="vec-dot-def-btn"><span class="in-ltr-blue">D</span>efinition</a>  
+      <a href="javascript: void(0);" id="vec-dot-def-btn">
+        <span class="in-ltr-blue">D</span>efinition
+      </a>  
     </div>
     <div id="vec-dot-def-win" class="m-def-win">
       <p>If</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
-        a<sub>2</sub> <b>&#9002;</b></p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> <b>&#9002;</b>
+      </p>
       <p>and</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
-        b<sub>2</sub> <b>&#9002;</b></p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
+        b<sub>2</sub> <b>&#9002;</b>
+      </p>
       <p>then</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> <span class="in-dot">&middot;</span>
-        <span class="in-ltr-blue">b</span> = a<sub>1</sub>b<sub>1</sub> + a<sub>2</sub>b<sub>2</sub>.</p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-orange">a</span> <span class="in-dot">&middot;</span>
+        <span class="in-ltr-blue">b</span> = 
+        a<sub>1</sub>b<sub>1</sub> + a<sub>2</sub>b<sub>2</sub>.
+      </p>
       <br/>
       <br/>
       <p>If</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
-        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b></p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-orange">a</span> = <b>&#9001;</b> a<sub>1</sub> , 
+        a<sub>2</sub> , a<sub>3</sub> <b>&#9002;</b>
+      </p>
       <p>and</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
-        b<sub>2</sub> , b<sub>3</sub> <b>&#9002;</b></p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-blue">b</span> = <b>&#9001;</b> b<sub>1</sub> , 
+        b<sub>2</sub> , b<sub>3</sub> <b>&#9002;</b>
+      </p>
       <p>then</p>
-      <p class="m-def-win-highlight"><span class="in-ltr-orange">a</span> <span class="in-dot">&middot;</span>
-       <span class="in-ltr-blue">b</span> = 
-       </b> a<sub>1</sub>b<sub>1</sub> + a<sub>2</sub>b<sub>2</sub> + 
-       a<sub>3</sub>b<sub>3</sub>.</p>
+      <p class="m-def-win-highlight">
+        <span class="in-ltr-orange">a</span> <span class="in-dot">&middot;</span> 
+        <span class="in-ltr-blue">b</span> = 
+        </b> a<sub>1</sub>b<sub>1</sub> + a<sub>2</sub>b<sub>2</sub> + 
+        a<sub>3</sub>b<sub>3</sub>.
+      </p>
       <footer>
-       <a href="javascript: void(0);" id="vec-dot-def-win-close"><span class="in-ltr-blue">C</span>lose</a> 
+        <a href="javascript: void(0);" id="vec-dot-def-win-close">
+          <span class="in-ltr-blue">C</span>lose
+        </a> 
       </footer>
     </div>
     <div class="m-calc-content-win">
@@ -707,7 +746,7 @@
     </div>
     <div class="m-feature-col-3">
       <header>
-        <h3><span class="in-ltr-green">&#36;</span> In the Works</h3>
+        <h3><i class='fa fa-wrench'></i> In the Works</h3>
       </header>
       <a name="mob-about"></a><!-- mobile anchor -->
       <ul>
@@ -723,11 +762,16 @@
       <h2><span class="in-ltr-orange">A</span>bout</h2>
     </header>
     <!-- @todo: desktop about col width -->
-    <div class="m-about-col-">
+    <div class="m-about-col-10">
       <div class="m-about-content-wrapper">
         <p>
           V is for Vector was created to assist calculus and pre-calculus
-          students in their study of vectors.
+          students in their study of vectors. It is a collection of vector
+          operation calculators. Each calculator contains a minimal definition
+          describing how to perform the calculation; however, the definition
+          is not intended to describe any of the deeper mathematical concepts
+          related to the operation. Use the calculators to check your work or
+          as an aid to your understanding of vectors.
         </p>
       </div>
     </div>
@@ -738,8 +782,8 @@
       <h2><span class="in-ltr-orange">L</span>inks</h2>
     </header>
   </section>
-  <footer>
-    <p>Copyright &copy; 2015 Evan Vermilyea</p>
+  <footer class='l-main-footer'>
+    <p>Copyright &copy; 2016 Evan Vermilyea</p>
   </footer>
   <script src="vectors-fd.js"></script> 
 </body>
