@@ -57,8 +57,9 @@ body {
   padding-top: 9.375em;
 }
 
-h1 {
-  font-size: 4em;
+
+h1 span:first-child {
+  font-size: 2em;
   font-family: 'audiowide', helvetica, sans-serif;
   color: #ff5600;
   background-color: #333;
@@ -68,13 +69,23 @@ h1 {
   padding-right: 16px;
 }
 
-h2 {
+h1 span:last-child {
   margin-top: .5em; 
-  font-size: 1.5em;
+  font-size: 1em;
   font-family: 'nova square', helvetica, sans-serif;
   background-color: #515151;
   color: white;
   padding: 5px;
+}
+
+h1 span:last-child span {
+  color: #ff5600;
+  padding: 0;
+}
+
+h2 {
+  color: white;
+  font-family: 'nova square', helvetica, sans-serif;
 }
 
 a {
@@ -125,7 +136,7 @@ a {
 
 .m-main-title-section {
   display: inline-block;
-  margin: 2% 0 2% 2%;
+  margin: 2% 0 4% 2%;
 }
 
 .m-header-nav {
