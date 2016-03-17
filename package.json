@@ -1,0 +1,23 @@
+{
+  "name": "visforvector",
+  "version": "1.0.0",
+  "description": "Site containing vector calculators",
+  "main": "vectors-fd.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evrm1ya/visforvector.git"
+  },
+  "author": "Evan Vermilyea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evrm1ya/visforvector/issues"
+  },
+  "homepage": "https://github.com/evrm1ya/visforvector#readme",
+  "devDependencies": {
+    "clean-css": "^3.4.10",
+    "uglify-js": "^2.6.2"
+  }
+}
