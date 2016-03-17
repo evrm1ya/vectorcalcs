@@ -112,8 +112,9 @@ a {
 }
 
 .l-features {
+  overflow: auto;
   width: 100%;
-  padding: .5em 1em;
+  padding: 50px 8.333%;
   background-color: #ddd;
 }
 
@@ -123,8 +124,8 @@ a {
   background-color: #ddd;
 }
 
-.l-code {
-  display: none;
+.l-links {
+  background-color: #ddd;
 }
 
 .l-main-footer {
@@ -531,6 +532,7 @@ a {
   border: .1em solid #333;
   border-radius: .5em;
   padding: 2em 0;
+  width: 100%;
   
 }
 
@@ -556,6 +558,51 @@ a {
 
 [class*="m-dsktp-instruct-win"] {
   display: none;
+}
+
+.m-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+[class*='m-links-content-wrapper'] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+  padding: 50px 8.333%;
+}
+
+[class*='m-links-content-wrapper'] ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;    
+  background-color: #f0f0f0;
+  border: .1em solid #333;
+  width: 100%;
+  min-height: 200px;
+  padding: 10px; 
+  border-radius: .5em;
+}
+
+[class*='m-links-content-wrapper'] ul li {
+  font-family: 'nova square', helvetica, sans-serif;
+  margin: 6px 0;
+}
+
+[class*='m-links-content-wrapper'] ul li a {
+  color: #3056ff;
+  text-decoration: none;
+}
+
+[class*='m-links-content-wrapper'] ul li a:hover {
+  text-decoration: underline;
 }
 
 /**
@@ -659,10 +706,6 @@ a {
     position: static;
   }
 
-  .l-features {
-    overflow: auto;
-    padding: 4em 0;
-  }
 
   .l-workspace-col-11 {
     display: inline-block;
