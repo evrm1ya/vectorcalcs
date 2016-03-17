@@ -23,10 +23,41 @@
  */
 
 /**
- *
- * @todo: vector lib
- *
+ * Calculators
  */
+
+var calculators = (function() {
+  function checkForFraction(value) {
+    var check = value.search(/\//);
+    if (check > 0) {
+      var splitVal = value.split('/');
+      var numerator = Number(splitVal[0]);
+      var denominator = Number(splitVal[1]);
+      return numerator / denominator;
+    }
+    return Number(value);
+  }
+  function convertInputArray(inArray) {
+    var convertedArr = [];
+    var inArrayLength = inArray.length;
+    for (var i = 0; i < inArrayLength; i++) {
+      var convertedVal = checkForFraction(inArray[i]);  
+      convertedArr.push(convertedVal);
+    }
+    return convertedArr;
+  }
+  return {
+    twoSpaceVecSubCalculator(inArray) {
+      var vals = convertInputArray(inArray);
+      return { 
+        solOne: vals[0] - vals[2],
+        solTwo: vals[1] - vals[3]
+      }
+    }
+  }
+})();
+
+
 
 var VECTORS = VECTORS || {};
 
@@ -269,7 +300,7 @@ VECTORS.twoSpaceVecAddCalc = {
     rstBtn: document.getElementById("twoD-vAdd-rst-btn")
   },
   calculation: function() {
-    var io = VECTORS.twoSpaceVecAddCalc.ioConfig;
+    var io = this.ioConfig;
     var a1 = Number(io.aOneIn.value),
         a2 = Number(io.aTwoIn.value),
         b1 = Number(io.bOneIn.value),
@@ -285,7 +316,7 @@ VECTORS.twoSpaceVecAddCalc = {
   clickActions: function() {
     var calcBtn = this.btnConfig.calcBtn,
         rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
+        calculate = this.calculation.bind(this),
         reset = this.resetIO;
     return function() {
       calcBtn.onclick = calculate;
@@ -369,14 +400,14 @@ VECTORS.twoSpaceVecSubCalc = {
   },
   calculation: function() {
     var io = VECTORS.twoSpaceVecSubCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        b1 = Number(io.bOneIn.value),
-        b2 = Number(io.bTwoIn.value);
-    var solOne = io.solOneOut,
-        solTwo = io.solTwoOut;
-    solOne.value = a1 - b1;
-    solTwo.value = a2 - b2;
+    var a1 = io.aOneIn.value,
+        a2 = io.aTwoIn.value,
+        b1 = io.bOneIn.value,
+        b2 = io.bTwoIn.value;
+    var inArray = [a1, a2, b1, b2];
+    var solutions = calculators.twoSpaceVecSubCalculator(inArray);
+    io.solOneOut.value = solutions.solOne;
+    io.solTwoOut.value = solutions.solTwo;
   },
   resetIO: function() {
     VECTORS.twoSpaceVecSubCalc.ioConfig.form.reset();
