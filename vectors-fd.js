@@ -27,6 +27,7 @@
  */
 
 var calculators = (function() {
+
   function checkForFraction(value) {
     var check = value.search(/\//);
     if (check > 0) {
@@ -37,6 +38,7 @@ var calculators = (function() {
     }
     return Number(value);
   }
+
   function convertInputArray(inArray) {
     var convertedArr = [];
     var inArrayLength = inArray.length;
@@ -46,12 +48,21 @@ var calculators = (function() {
     }
     return convertedArr;
   }
+
   return {
     twoSpaceVecSubCalculator(inArray) {
       var vals = convertInputArray(inArray);
       return { 
         solOne: vals[0] - vals[2],
         solTwo: vals[1] - vals[3]
+      }
+    },
+    threeSpaceVecSubCalculator(inArray) {
+      var vals = convertInputArray(inArray);
+      return {
+        solOne: vals[0] - vals[3],
+        solTwo: vals[1] - vals[4],
+        solThree: vals[2] - vals[5]
       }
     }
   }
@@ -446,18 +457,17 @@ VECTORS.threeSpaceVecSubCalc = {
   },
   calculation: function() {
     var io = VECTORS.threeSpaceVecSubCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        a3 = Number(io.aThreeIn.value),
-        b1 = Number(io.bOneIn.value),
-        b2 = Number(io.bTwoIn.value),
-        b3 = Number(io.bThreeIn.value);
-    var solOne = io.solOneOut,
-        solTwo = io.solTwoOut,
-        solThree = io.solThreeOut;
-    solOne.value = a1 - b1;
-    solTwo.value = a2 - b2;
-    solThree.value = a3 - b3;
+    var a1 = io.aOneIn.value,
+        a2 = io.aTwoIn.value,
+        a3 = io.aThreeIn.value,
+        b1 = io.bOneIn.value,
+        b2 = io.bTwoIn.value,
+        b3 = io.bThreeIn.value;
+    var inArray = [a1, a2, a3, b1, b2, b3];
+    var solutions = calculators.threeSpaceVecSubCalculator(inArray);
+    io.solOneOut.value = solutions.solOne;
+    io.solTwoOut.value = solutions.solTwo;
+    io.solThreeOut.value = solutions.solThree;
   },
   resetIO: function() {
     VECTORS.threeSpaceVecSubCalc.ioConfig.form.reset();
