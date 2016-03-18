@@ -311,19 +311,27 @@ var calculators = (function() {
       io.solThreeOut.value = vals[2] + vals[5];
     },
     twoSpaceVecSubCalculator(inArray) {
-      var vals = convertInputArray(inArray);
-      return { 
-        solOne: vals[0] - vals[2],
-        solTwo: vals[1] - vals[3]
-      }
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          b1 = io.bOneIn.value,
+          b2 = io.bTwoIn.value;
+      var vals = convertInputArray([a1, a2, b1, b2]);
+      io.solOneOut.value = vals[0] - vals[2];
+      io.solTwoOut.value = vals[1] - vals[3];
     },
     threeSpaceVecSubCalculator(inArray) {
-      var vals = convertInputArray(inArray);
-      return {
-        solOne: vals[0] - vals[3],
-        solTwo: vals[1] - vals[4],
-        solThree: vals[2] - vals[5]
-      }
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          a3 = io.aThreeIn.value,
+          b1 = io.bOneIn.value,
+          b2 = io.bTwoIn.value,
+          b3 = io.bThreeIn.value;
+      var vals = convertInputArray([a1, a2, a3, b1, b2, b3]);
+      io.solOneOut.value = vals[0] - vals[3];
+      io.solTwoOut.value = vals[1] - vals[4];
+      io.solThreeOut.value = vals[2] - vals[5];
     },
     twoSpaceScalarMultCalculator() {
       var io = this._config.io;
@@ -333,6 +341,25 @@ var calculators = (function() {
       var vals = convertInputArray([c, a1, a2]);
       io.solOneOut.value = vals[0] * vals[1];
       io.solTwoOut.value = vals[0] * vals[2];
+    },
+    threeSpaceScalarMultCalculator() {
+      var io = this._config.io;
+      var c = io.scalar.value,
+          a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          a3 = io.aThreeIn.value;
+      var vals = convertInputArray([c, a1, a2, a3]);
+      io.solOneOut.value = vals[0] * vals[1];
+      io.solTwoOut.value = vals[0] * vals[2];
+      io.solThreeOut.value = vals[0] * vals[3];
+    },
+    twoSpaceMagCalculator() {
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value;
+      var vals = convertInputArray([a1, a2]);
+      var solution = io.solution;
+      io.solution.value = Math.sqrt(Math.pow(vals[0], 2) + Math.pow(vals[1], 2));
     }
   }
 })();
@@ -393,8 +420,8 @@ VECTORS.threeSpaceVecAddCalc = new VectorCalculator(threeSpaceVecAddConfig, thre
  *
  */
 
-VECTORS.twoSpaceVecSubCalc = {
-  ioConfig: {
+var twoSpaceVecSubConfig = {
+  io: {
     form: document.getElementById("twoD-vSub-calc"),
     aOneIn: document.getElementById("twoD-vSub-aOne-in"),
     aTwoIn: document.getElementById("twoD-vSub-aTwo-in"), 
@@ -403,40 +430,19 @@ VECTORS.twoSpaceVecSubCalc = {
     solOneOut: document.getElementById("twoD-vSub-solOne-out"),
     solTwoOut: document.getElementById("twoD-vSub-solTwo-out")
   },
-  btnConfig: {
+  btn: {
     calcBtn: document.getElementById("twoD-vSub-calc-btn"),
     rstBtn: document.getElementById("twoD-vSub-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.twoSpaceVecSubCalc.ioConfig;
-    var a1 = io.aOneIn.value,
-        a2 = io.aTwoIn.value,
-        b1 = io.bOneIn.value,
-        b2 = io.bTwoIn.value;
-    var solutions = calculators.twoSpaceVecSubCalculator([a1, a2, b1, b2]);
-    io.solOneOut.value = solutions.solOne;
-    io.solTwoOut.value = solutions.solTwo;
-  },
-  resetIO: function() {
-    this.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
   }
-}
+};
 
-VECTORS.threeSpaceVecSubCalc = {
-  ioConfig: {
+var twoSpaceVecSubCalculator  = calculators.twoSpaceVecSubCalculator;
+
+VECTORS.twoSpaceVecSubCalc = new VectorCalculator(twoSpaceVecSubConfig, twoSpaceVecSubCalculator);
+
+
+var threeSpaceVecSubCalcConfig = {
+  io: {
     form: document.getElementById("threeD-vSub-calc"),
     aOneIn: document.getElementById("threeD-vSub-aOne-in"),
     aTwoIn: document.getElementById("threeD-vSub-aTwo-in"), 
@@ -448,40 +454,17 @@ VECTORS.threeSpaceVecSubCalc = {
     solTwoOut: document.getElementById("threeD-vSub-solTwo-out"),
     solThreeOut: document.getElementById("threeD-vSub-solThree-out")
   },
-  btnConfig: {
+  btn: {
     calcBtn: document.getElementById("threeD-vSub-calc-btn"),
     rstBtn: document.getElementById("threeD-vSub-rst-btn")
-  },
-  calculation: function() {
-    var io = this.ioConfig;
-    var a1 = io.aOneIn.value,
-        a2 = io.aTwoIn.value,
-        a3 = io.aThreeIn.value,
-        b1 = io.bOneIn.value,
-        b2 = io.bTwoIn.value,
-        b3 = io.bThreeIn.value;
-    var solutions = calculators.threeSpaceVecSubCalculator([a1, a2, a3, b1, b2, b3]);
-    io.solOneOut.value = solutions.solOne;
-    io.solTwoOut.value = solutions.solTwo;
-    io.solThreeOut.value = solutions.solThree;
-  },
-  resetIO: function() {
-    this.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation.bind(this),
-        reset = this.resetIO.bind(this);
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
   }
-}
+};
+
+var threeSpaceVecSubCalculator = calculators.threeSpaceVecSubCalculator;
+
+VECTORS.threeSpaceVecSubCalc = new VectorCalculator(
+  threeSpaceVecSubCalcConfig, threeSpaceVecSubCalculator
+);
 
 /**
  *
@@ -502,57 +485,16 @@ var twoSpcScalMultConfig = {
     calcBtn: document.getElementById("twoD-vScal-mult-calc-btn"),
     rstBtn: document.getElementById("twoD-vScal-mult-rst-btn")
   }
-}
+};
 
-var testCalc = calculators.twoSpaceScalarMultCalculator;
-var twoSpaceScalMultCalc = new VectorCalculator(
-  twoSpcScalMultConfig, 
-  testCalc
+var twoSpaceScalMultCalculator = calculators.twoSpaceScalarMultCalculator;
+
+VECTORS.twoSpaceScalMultCalc = new VectorCalculator(
+  twoSpcScalMultConfig, twoSpaceScalMultCalculator
 );
-twoSpaceScalMultCalc.run();
 
-VECTORS.twoSpaceScalMultCalc = {
-  ioConfig: {
-    form: document.getElementById("twoD-scal-mult-calc"),
-    scalar: document.getElementById("twoD-vScal-mult-c-in"),
-    aOneIn: document.getElementById("twoD-vScal-mult-aOne-in"),
-    aTwoIn: document.getElementById("twoD-vScal-mult-aTwo-in"), 
-    solOneOut: document.getElementById("twoD-vScal-mult-solOne-out"),
-    solTwoOut: document.getElementById("twoD-vScal-mult-solTwo-out")
-  },
-  btnConfig: {
-    calcBtn: document.getElementById("twoD-vScal-mult-calc-btn"),
-    rstBtn: document.getElementById("twoD-vScal-mult-rst-btn")
-  },
-  calculation: function() {
-    var io = this.ioConfig;
-    var c = io.scalar.value,
-        a1 = io.aOneIn.value,
-        a2 = io.aTwoIn.value;
-    var solutions = calculators.twoSpaceScalarMultCalculator([c, a1, a2]);
-    io.solOneOut.value = solutions.solOne;
-    io.solTwoOut.value = solutions.solTwo;
-  },
-  resetIO: function() {
-    this.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation.bind(this),
-        reset = this.resetIO.bind(this);
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
-  }
-}
-
-VECTORS.threeSpaceScalMultCalc = {
-  ioConfig: {
+var threeSpaceScalMultConfig = {
+  io: {
     form: document.getElementById("threeD-scal-mult-calc"),
     scalar: document.getElementById("threeD-vScal-mult-c-in"),
     aOneIn: document.getElementById("threeD-vScal-mult-aOne-in"),
@@ -562,40 +504,17 @@ VECTORS.threeSpaceScalMultCalc = {
     solTwoOut: document.getElementById("threeD-vScal-mult-solTwo-out"),
     solThreeOut: document.getElementById("threeD-vScal-mult-solThree-out")
   },
-  btnConfig: {
+  btn: {
     calcBtn: document.getElementById("threeD-vScal-mult-calc-btn"),
     rstBtn: document.getElementById("threeD-vScal-mult-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.threeSpaceScalMultCalc.ioConfig;
-    var c = Number(io.scalar.value),
-        a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        a3 = Number(io.aThreeIn.value);
-    var solOne = io.solOneOut,
-        solTwo = io.solTwoOut,
-        solThree = io.solThreeOut;
-    solOne.value = c * a1;
-    solTwo.value = c * a2;
-    solThree.value = c * a3;
-  },
-  resetIO: function() {
-    VECTORS.threeSpaceScalMultCalc.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
   }
-}
+};
+
+var threeSpaceScalarMultCalculator = calculators.threeSpaceScalarMultCalculator;
+
+VECTORS.threeSpaceScalMultCalc = new VectorCalculator(
+  threeSpaceScalMultConfig, threeSpaceScalarMultCalculator
+);
 
 /**
  *
@@ -603,6 +522,26 @@ VECTORS.threeSpaceScalMultCalc = {
  *
  */
 
+var twoSpaceMagConfig = {
+  io: {
+    form: document.getElementById("twoD-mag-calc"),
+    aOneIn: document.getElementById("twoD-mag-aOne-in"),
+    aTwoIn: document.getElementById("twoD-mag-aTwo-in"), 
+    solution: document.getElementById("twoD-mag-sol-out"),
+  },
+  btn: {
+    calcBtn: document.getElementById("twoD-mag-calc-btn"),
+    rstBtn: document.getElementById("twoD-mag-rst-btn")
+  }
+};
+
+var twoSpaceMagCalculator = calculators.twoSpaceMagCalculator;
+
+VECTORS.twoSpaceMagCalc = new VectorCalculator(
+  twoSpaceMagConfig, twoSpaceMagCalculator
+);
+
+/*
 VECTORS.twoSpaceMagCalc = {
   ioConfig: {
     form: document.getElementById("twoD-mag-calc"),
@@ -638,7 +577,7 @@ VECTORS.twoSpaceMagCalc = {
     this.clickActions();
   }
 }
-
+*/
 VECTORS.threeSpaceMagCalc = {
   ioConfig: {
     form: document.getElementById("threeD-mag-calc"),
@@ -938,8 +877,9 @@ VECTORS.twoSpaceVecAddCalc.run();
 VECTORS.threeSpaceVecAddCalc.run();
 VECTORS.twoSpaceVecSubCalc.run();
 VECTORS.threeSpaceVecSubCalc.run();
-//VECTORS.twoSpaceScalMultCalc.run();
+VECTORS.twoSpaceScalMultCalc.run();
 VECTORS.threeSpaceScalMultCalc.run();
+debugger
 VECTORS.twoSpaceMagCalc.run();
 VECTORS.twoSpaceDotCalc.run();
 VECTORS.threeSpaceDotCalc.run();
