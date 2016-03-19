@@ -358,8 +358,74 @@ var calculators = (function() {
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value;
       var vals = convertInputArray([a1, a2]);
-      var solution = io.solution;
       io.solution.value = Math.sqrt(Math.pow(vals[0], 2) + Math.pow(vals[1], 2));
+    },
+    threeSpaceMagCalculator() {
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          a3 = io.aThreeIn.value;
+      var vals = convertInputArray([a1, a2, a3]);
+      io.solution.value = Math.sqrt(Math.pow(vals[0], 2) + Math.pow(vals[1], 2) + Math.pow(vals[2], 2));
+    },
+    twoSpaceDotCalculator() {
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          b1 = io.bOneIn.value,
+          b2 = io.bTwoIn.value;
+      var vals = convertInputArray([a1, a2, b1, b2]);
+      io.solution.value = (vals[0] * vals[2]) + (vals[1] * vals[3]);
+    },
+    threeSpaceDotCalculator() {
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          a3 = io.aThreeIn.value,
+          b1 = io.bOneIn.value,
+          b2 = io.bTwoIn.value,
+          b3 = io.bThreeIn.value;
+      var vals = convertInputArray([a1, a2, a3, b1, b2, b3]);
+      io.solution.value = (vals[0] * vals[3]) + (vals[1] * vals[4]) + (vals[2] * vals[5]);
+    },
+    crossProductCalculator() {
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          a3 = io.aThreeIn.value,
+          b1 = io.bOneIn.value,
+          b2 = io.bTwoIn.value,
+          b3 = io.bThreeIn.value;
+      var vals = convertInputArray([a1, a2, a3, b1, b2, b3]);
+      io.solOneOut.value = (vals[1] * vals[5]) - (vals[2] * vals[4]);
+      io.solTwoOut.value = (vals[2] * vals[3]) - (vals[0] * vals[5]);
+      io.solThreeOut.value = (vals[0] * vals[4]) - (vals[1] * vals[3]);
+    },
+    twoSpaceAngleCalculator() {
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          b1 = io.bOneIn.value,
+          b2 = io.bTwoIn.value;
+      var vals = convertInputArray([a1, a2, b1, b2]);
+      var dot = (vals[0] * vals[2]) + (vals[1] * vals[3]),
+          magA = Math.sqrt(Math.pow(vals[0], 2) + Math.pow(vals[1], 2)),
+          magB = Math.sqrt(Math.pow(vals[2], 2) + Math.pow(vals[3], 2));
+      io.theta.value = Math.acos(dot/(magA * magB));
+    },
+    threeSpaceAngleCalculator() {
+      var io = this._config.io;
+      var a1 = io.aOneIn.value,
+          a2 = io.aTwoIn.value,
+          a3 = io.aThreeIn.value,
+          b1 = io.bOneIn.value,
+          b2 = io.bTwoIn.value,
+          b3 = io.bThreeIn.value;
+      var vals = convertInputArray([a1, a2, a3, b1, b2, b3]);
+      var dot = (vals[0] * vals[3]) + (vals[1] * vals[4]) + (vals[2] * vals[5]),
+          magA = Math.sqrt(Math.pow(vals[0], 2) + Math.pow(vals[1], 2) + Math.pow(vals[2], 2)),
+          magB = Math.sqrt(Math.pow(vals[3], 2) + Math.pow(vals[4], 2) + Math.pow(vals[5], 2));
+      io.theta.value = Math.acos(dot/(magA * magB));
     }
   }
 })();
@@ -370,48 +436,52 @@ var calculators = (function() {
  *
  */
 
-var twoSpaceVecAddConfig = { 
-  io: {
-    form: document.getElementById("twoD-vAdd-calc"),
-    aOneIn: document.getElementById("twoD-vAdd-aOne-in"),
-    aTwoIn: document.getElementById("twoD-vAdd-aTwo-in"), 
-    bOneIn: document.getElementById("twoD-vAdd-bOne-in"),
-    bTwoIn: document.getElementById("twoD-vAdd-bTwo-in"),
-    solOneOut: document.getElementById("twoD-vAdd-solOne-out"),
-    solTwoOut: document.getElementById("twoD-vAdd-solTwo-out")
-  },
-  btn: {
-    calcBtn: document.getElementById("twoD-vAdd-calc-btn"),
-    rstBtn: document.getElementById("twoD-vAdd-rst-btn")
-  }
-};
+(function(VECTORS) {
+  var twoSpaceVecAddConfig = { 
+    io: {
+      form: document.getElementById("twoD-vAdd-calc"),
+      aOneIn: document.getElementById("twoD-vAdd-aOne-in"),
+      aTwoIn: document.getElementById("twoD-vAdd-aTwo-in"), 
+      bOneIn: document.getElementById("twoD-vAdd-bOne-in"),
+      bTwoIn: document.getElementById("twoD-vAdd-bTwo-in"),
+      solOneOut: document.getElementById("twoD-vAdd-solOne-out"),
+      solTwoOut: document.getElementById("twoD-vAdd-solTwo-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("twoD-vAdd-calc-btn"),
+      rstBtn: document.getElementById("twoD-vAdd-rst-btn")
+    }
+  };
 
-var twoSpaceVecAddCalculator = calculators.twoSpaceVecAddCalculator;
+  var twoSpaceVecAddCalculator = calculators.twoSpaceVecAddCalculator;
 
-VECTORS.twoSpaceVecAddCalc = new VectorCalculator(twoSpaceVecAddConfig, twoSpaceVecAddCalculator);
+  VECTORS.twoSpaceVecAddCalc = new VectorCalculator(twoSpaceVecAddConfig, twoSpaceVecAddCalculator);
+})(VECTORS);
 
-var threeSpaceVecAddConfig = {
-  io: {
-    form: document.getElementById("threeD-vAdd-calc"),
-    aOneIn: document.getElementById("threeD-vAdd-aOne-in"),
-    aTwoIn: document.getElementById("threeD-vAdd-aTwo-in"), 
-    aThreeIn: document.getElementById("threeD-vAdd-aThree-in"),
-    bOneIn: document.getElementById("threeD-vAdd-bOne-in"),
-    bTwoIn: document.getElementById("threeD-vAdd-bTwo-in"),
-    bThreeIn: document.getElementById("threeD-vAdd-bThree-in"),
-    solOneOut: document.getElementById("threeD-vAdd-solOne-out"),
-    solTwoOut: document.getElementById("threeD-vAdd-solTwo-out"),
-    solThreeOut: document.getElementById("threeD-vAdd-solThree-out")
-  },
-  btn: {
-    calcBtn: document.getElementById("threeD-vAdd-calc-btn"),
-    rstBtn: document.getElementById("threeD-vAdd-rst-btn")
-  }
-};
+(function(VECTORS) {
+  var threeSpaceVecAddConfig = {
+    io: {
+      form: document.getElementById("threeD-vAdd-calc"),
+      aOneIn: document.getElementById("threeD-vAdd-aOne-in"),
+      aTwoIn: document.getElementById("threeD-vAdd-aTwo-in"), 
+      aThreeIn: document.getElementById("threeD-vAdd-aThree-in"),
+      bOneIn: document.getElementById("threeD-vAdd-bOne-in"),
+      bTwoIn: document.getElementById("threeD-vAdd-bTwo-in"),
+      bThreeIn: document.getElementById("threeD-vAdd-bThree-in"),
+      solOneOut: document.getElementById("threeD-vAdd-solOne-out"),
+      solTwoOut: document.getElementById("threeD-vAdd-solTwo-out"),
+      solThreeOut: document.getElementById("threeD-vAdd-solThree-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("threeD-vAdd-calc-btn"),
+      rstBtn: document.getElementById("threeD-vAdd-rst-btn")
+    }
+  };
 
-var threeSpaceVecAddCalculator = calculators.threeSpaceVecAddCalculator;
+  var threeSpaceVecAddCalculator = calculators.threeSpaceVecAddCalculator;
 
-VECTORS.threeSpaceVecAddCalc = new VectorCalculator(threeSpaceVecAddConfig, threeSpaceVecAddCalculator);
+  VECTORS.threeSpaceVecAddCalc = new VectorCalculator(threeSpaceVecAddConfig, threeSpaceVecAddCalculator);
+})(VECTORS);
 
 
 /**
@@ -420,51 +490,54 @@ VECTORS.threeSpaceVecAddCalc = new VectorCalculator(threeSpaceVecAddConfig, thre
  *
  */
 
-var twoSpaceVecSubConfig = {
-  io: {
-    form: document.getElementById("twoD-vSub-calc"),
-    aOneIn: document.getElementById("twoD-vSub-aOne-in"),
-    aTwoIn: document.getElementById("twoD-vSub-aTwo-in"), 
-    bOneIn: document.getElementById("twoD-vSub-bOne-in"),
-    bTwoIn: document.getElementById("twoD-vSub-bTwo-in"),
-    solOneOut: document.getElementById("twoD-vSub-solOne-out"),
-    solTwoOut: document.getElementById("twoD-vSub-solTwo-out")
-  },
-  btn: {
-    calcBtn: document.getElementById("twoD-vSub-calc-btn"),
-    rstBtn: document.getElementById("twoD-vSub-rst-btn")
-  }
-};
+(function(VECTORS) {
+  var twoSpaceVecSubConfig = {
+    io: {
+      form: document.getElementById("twoD-vSub-calc"),
+      aOneIn: document.getElementById("twoD-vSub-aOne-in"),
+      aTwoIn: document.getElementById("twoD-vSub-aTwo-in"), 
+      bOneIn: document.getElementById("twoD-vSub-bOne-in"),
+      bTwoIn: document.getElementById("twoD-vSub-bTwo-in"),
+      solOneOut: document.getElementById("twoD-vSub-solOne-out"),
+      solTwoOut: document.getElementById("twoD-vSub-solTwo-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("twoD-vSub-calc-btn"),
+      rstBtn: document.getElementById("twoD-vSub-rst-btn")
+    }
+  };
 
-var twoSpaceVecSubCalculator  = calculators.twoSpaceVecSubCalculator;
+  var twoSpaceVecSubCalculator  = calculators.twoSpaceVecSubCalculator;
 
-VECTORS.twoSpaceVecSubCalc = new VectorCalculator(twoSpaceVecSubConfig, twoSpaceVecSubCalculator);
+  VECTORS.twoSpaceVecSubCalc = new VectorCalculator(twoSpaceVecSubConfig, twoSpaceVecSubCalculator);
+})(VECTORS);
 
+(function(VECTORS) {
+  var threeSpaceVecSubCalcConfig = {
+    io: {
+      form: document.getElementById("threeD-vSub-calc"),
+      aOneIn: document.getElementById("threeD-vSub-aOne-in"),
+      aTwoIn: document.getElementById("threeD-vSub-aTwo-in"), 
+      aThreeIn: document.getElementById("threeD-vSub-aThree-in"),
+      bOneIn: document.getElementById("threeD-vSub-bOne-in"),
+      bTwoIn: document.getElementById("threeD-vSub-bTwo-in"),
+      bThreeIn: document.getElementById("threeD-vSub-bThree-in"),
+      solOneOut: document.getElementById("threeD-vSub-solOne-out"),
+      solTwoOut: document.getElementById("threeD-vSub-solTwo-out"),
+      solThreeOut: document.getElementById("threeD-vSub-solThree-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("threeD-vSub-calc-btn"),
+      rstBtn: document.getElementById("threeD-vSub-rst-btn")
+    }
+  };
 
-var threeSpaceVecSubCalcConfig = {
-  io: {
-    form: document.getElementById("threeD-vSub-calc"),
-    aOneIn: document.getElementById("threeD-vSub-aOne-in"),
-    aTwoIn: document.getElementById("threeD-vSub-aTwo-in"), 
-    aThreeIn: document.getElementById("threeD-vSub-aThree-in"),
-    bOneIn: document.getElementById("threeD-vSub-bOne-in"),
-    bTwoIn: document.getElementById("threeD-vSub-bTwo-in"),
-    bThreeIn: document.getElementById("threeD-vSub-bThree-in"),
-    solOneOut: document.getElementById("threeD-vSub-solOne-out"),
-    solTwoOut: document.getElementById("threeD-vSub-solTwo-out"),
-    solThreeOut: document.getElementById("threeD-vSub-solThree-out")
-  },
-  btn: {
-    calcBtn: document.getElementById("threeD-vSub-calc-btn"),
-    rstBtn: document.getElementById("threeD-vSub-rst-btn")
-  }
-};
+  var threeSpaceVecSubCalculator = calculators.threeSpaceVecSubCalculator;
 
-var threeSpaceVecSubCalculator = calculators.threeSpaceVecSubCalculator;
-
-VECTORS.threeSpaceVecSubCalc = new VectorCalculator(
-  threeSpaceVecSubCalcConfig, threeSpaceVecSubCalculator
-);
+  VECTORS.threeSpaceVecSubCalc = new VectorCalculator(
+    threeSpaceVecSubCalcConfig, threeSpaceVecSubCalculator
+  );
+})(VECTORS);
 
 /**
  *
@@ -472,49 +545,53 @@ VECTORS.threeSpaceVecSubCalc = new VectorCalculator(
  *
  */
 
-var twoSpcScalMultConfig = {
-  io: {
-    form: document.getElementById("twoD-scal-mult-calc"),
-    scalar: document.getElementById("twoD-vScal-mult-c-in"),
-    aOneIn: document.getElementById("twoD-vScal-mult-aOne-in"),
-    aTwoIn: document.getElementById("twoD-vScal-mult-aTwo-in"), 
-    solOneOut: document.getElementById("twoD-vScal-mult-solOne-out"),
-    solTwoOut: document.getElementById("twoD-vScal-mult-solTwo-out")
-  },
-  btn: {
-    calcBtn: document.getElementById("twoD-vScal-mult-calc-btn"),
-    rstBtn: document.getElementById("twoD-vScal-mult-rst-btn")
-  }
-};
+(function(VECTORS) {
+  var twoSpcScalMultConfig = {
+    io: {
+      form: document.getElementById("twoD-scal-mult-calc"),
+      scalar: document.getElementById("twoD-vScal-mult-c-in"),
+      aOneIn: document.getElementById("twoD-vScal-mult-aOne-in"),
+      aTwoIn: document.getElementById("twoD-vScal-mult-aTwo-in"), 
+      solOneOut: document.getElementById("twoD-vScal-mult-solOne-out"),
+      solTwoOut: document.getElementById("twoD-vScal-mult-solTwo-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("twoD-vScal-mult-calc-btn"),
+      rstBtn: document.getElementById("twoD-vScal-mult-rst-btn")
+    }
+  };
 
-var twoSpaceScalMultCalculator = calculators.twoSpaceScalarMultCalculator;
+  var twoSpaceScalMultCalculator = calculators.twoSpaceScalarMultCalculator;
 
-VECTORS.twoSpaceScalMultCalc = new VectorCalculator(
-  twoSpcScalMultConfig, twoSpaceScalMultCalculator
-);
+  VECTORS.twoSpaceScalMultCalc = new VectorCalculator(
+    twoSpcScalMultConfig, twoSpaceScalMultCalculator
+  );
+})(VECTORS);
 
-var threeSpaceScalMultConfig = {
-  io: {
-    form: document.getElementById("threeD-scal-mult-calc"),
-    scalar: document.getElementById("threeD-vScal-mult-c-in"),
-    aOneIn: document.getElementById("threeD-vScal-mult-aOne-in"),
-    aTwoIn: document.getElementById("threeD-vScal-mult-aTwo-in"), 
-    aThreeIn: document.getElementById("threeD-vScal-mult-aThree-in"),
-    solOneOut: document.getElementById("threeD-vScal-mult-solOne-out"),
-    solTwoOut: document.getElementById("threeD-vScal-mult-solTwo-out"),
-    solThreeOut: document.getElementById("threeD-vScal-mult-solThree-out")
-  },
-  btn: {
-    calcBtn: document.getElementById("threeD-vScal-mult-calc-btn"),
-    rstBtn: document.getElementById("threeD-vScal-mult-rst-btn")
-  }
-};
+(function(VECTORS) {
+  var threeSpaceScalMultConfig = {
+    io: {
+      form: document.getElementById("threeD-scal-mult-calc"),
+      scalar: document.getElementById("threeD-vScal-mult-c-in"),
+      aOneIn: document.getElementById("threeD-vScal-mult-aOne-in"),
+      aTwoIn: document.getElementById("threeD-vScal-mult-aTwo-in"), 
+      aThreeIn: document.getElementById("threeD-vScal-mult-aThree-in"),
+      solOneOut: document.getElementById("threeD-vScal-mult-solOne-out"),
+      solTwoOut: document.getElementById("threeD-vScal-mult-solTwo-out"),
+      solThreeOut: document.getElementById("threeD-vScal-mult-solThree-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("threeD-vScal-mult-calc-btn"),
+      rstBtn: document.getElementById("threeD-vScal-mult-rst-btn")
+    }
+  };
 
-var threeSpaceScalarMultCalculator = calculators.threeSpaceScalarMultCalculator;
+  var threeSpaceScalarMultCalculator = calculators.threeSpaceScalarMultCalculator;
 
-VECTORS.threeSpaceScalMultCalc = new VectorCalculator(
-  threeSpaceScalMultConfig, threeSpaceScalarMultCalculator
-);
+  VECTORS.threeSpaceScalMultCalc = new VectorCalculator(
+    threeSpaceScalMultConfig, threeSpaceScalarMultCalculator
+  );
+})(VECTORS);
 
 /**
  *
@@ -522,99 +599,49 @@ VECTORS.threeSpaceScalMultCalc = new VectorCalculator(
  *
  */
 
-var twoSpaceMagConfig = {
-  io: {
-    form: document.getElementById("twoD-mag-calc"),
-    aOneIn: document.getElementById("twoD-mag-aOne-in"),
-    aTwoIn: document.getElementById("twoD-mag-aTwo-in"), 
-    solution: document.getElementById("twoD-mag-sol-out"),
-  },
-  btn: {
-    calcBtn: document.getElementById("twoD-mag-calc-btn"),
-    rstBtn: document.getElementById("twoD-mag-rst-btn")
-  }
-};
+(function(VECTORS) {
+  var twoSpaceMagConfig = {
+    io: {
+      form: document.getElementById("twoD-mag-calc"),
+      aOneIn: document.getElementById("twoD-mag-aOne-in"),
+      aTwoIn: document.getElementById("twoD-mag-aTwo-in"), 
+      solution: document.getElementById("twoD-mag-sol-out"),
+    },
+    btn: {
+      calcBtn: document.getElementById("twoD-mag-calc-btn"),
+      rstBtn: document.getElementById("twoD-mag-rst-btn")
+    }
+  };
 
-var twoSpaceMagCalculator = calculators.twoSpaceMagCalculator;
+  var twoSpaceMagCalculator = calculators.twoSpaceMagCalculator;
 
-VECTORS.twoSpaceMagCalc = new VectorCalculator(
-  twoSpaceMagConfig, twoSpaceMagCalculator
-);
+  VECTORS.twoSpaceMagCalc = new VectorCalculator(
+    twoSpaceMagConfig, twoSpaceMagCalculator
+  );
+})(VECTORS);
 
-/*
-VECTORS.twoSpaceMagCalc = {
-  ioConfig: {
-    form: document.getElementById("twoD-mag-calc"),
-    aOneIn: document.getElementById("twoD-mag-aOne-in"),
-    aTwoIn: document.getElementById("twoD-mag-aTwo-in"), 
-    solution: document.getElementById("twoD-mag-sol-out"),
-  },
-  btnConfig: {
-    calcBtn: document.getElementById("twoD-mag-calc-btn"),
-    rstBtn: document.getElementById("twoD-mag-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.twoSpaceMagCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value);
-    var solution = io.solution;
-    solution.value = Math.sqrt(Math.pow(a1, 2) + Math.pow(a2, 2));
-  },
-  resetIO: function() {
-    VECTORS.twoSpaceMagCalc.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
-  }
-}
-*/
-VECTORS.threeSpaceMagCalc = {
-  ioConfig: {
-    form: document.getElementById("threeD-mag-calc"),
-    aOneIn: document.getElementById("threeD-mag-aOne-in"),
-    aTwoIn: document.getElementById("threeD-mag-aTwo-in"), 
-    aThreeIn: document.getElementById("threeD-mag-aThree-in"),
-    solution: document.getElementById("threeD-mag-sol-out"),
-  },
-  btnConfig: {
-    calcBtn: document.getElementById("threeD-mag-calc-btn"),
-    rstBtn: document.getElementById("threeD-mag-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.threeSpaceMagCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        a3 = Number(io.aThreeIn.value);
-    var solution = io.solution;
-    solution.value = Math.sqrt(Math.pow(a1, 2) + Math.pow(a2, 2) + Math.pow(a3, 2));
-  },
-  resetIO: function() {
-    VECTORS.threeSpaceMagCalc.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
-  }
-}
+(function(VECTORS) {
+  var threeSpaceMagConfig = {
+    io: {
+      form: document.getElementById("threeD-mag-calc"),
+      aOneIn: document.getElementById("threeD-mag-aOne-in"),
+      aTwoIn: document.getElementById("threeD-mag-aTwo-in"), 
+      aThreeIn: document.getElementById("threeD-mag-aThree-in"),
+      solution: document.getElementById("threeD-mag-sol-out"),
+    },
+    btn: {
+      calcBtn: document.getElementById("threeD-mag-calc-btn"),
+      rstBtn: document.getElementById("threeD-mag-rst-btn")
+    }
+  };
+
+  var threeSpaceMagCalculator = calculators.threeSpaceMagCalculator;
+
+  VECTORS.threeSpaceMagCalc = new VectorCalculator(
+    threeSpaceMagConfig, threeSpaceMagCalculator
+  );
+})(VECTORS);
+
 
 /**
  *
@@ -622,89 +649,53 @@ VECTORS.threeSpaceMagCalc = {
  *
  */
 
-VECTORS.twoSpaceDotCalc = {
-  ioConfig: {
-    form: document.getElementById("twoD-dot-calc"),
-    aOneIn: document.getElementById("twoD-dot-aOne-in"),
-    aTwoIn: document.getElementById("twoD-dot-aTwo-in"), 
-    bOneIn: document.getElementById("twoD-dot-bOne-in"),
-    bTwoIn: document.getElementById("twoD-dot-bTwo-in"),
-    solution: document.getElementById("twoD-dot-out")
-  },
-  btnConfig: {
-    calcBtn: document.getElementById("twoD-dot-calc-btn"),
-    rstBtn: document.getElementById("twoD-dot-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.twoSpaceDotCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        b1 = Number(io.bOneIn.value),
-        b2 = Number(io.bTwoIn.value);
-    var solution = io.solution;
-    solution.value = (a1 * b1) + (a2 * b2);
-  },
-  resetIO: function() {
-    VECTORS.twoSpaceDotCalc.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
-  }
-}
+(function(VECTORS) {
+  var twoSpaceDotConfig = {
+    io: {
+      form: document.getElementById("twoD-dot-calc"),
+      aOneIn: document.getElementById("twoD-dot-aOne-in"),
+      aTwoIn: document.getElementById("twoD-dot-aTwo-in"), 
+      bOneIn: document.getElementById("twoD-dot-bOne-in"),
+      bTwoIn: document.getElementById("twoD-dot-bTwo-in"),
+      solution: document.getElementById("twoD-dot-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("twoD-dot-calc-btn"),
+      rstBtn: document.getElementById("twoD-dot-rst-btn")
+    }
+  };
 
-VECTORS.threeSpaceDotCalc = {
-  ioConfig: {
-    form: document.getElementById("threeD-dot-calc"),
-    aOneIn: document.getElementById("threeD-dot-aOne-in"),
-    aTwoIn: document.getElementById("threeD-dot-aTwo-in"), 
-    aThreeIn: document.getElementById("threeD-dot-aThree-in"),
-    bOneIn: document.getElementById("threeD-dot-bOne-in"),
-    bTwoIn: document.getElementById("threeD-dot-bTwo-in"),
-    bThreeIn: document.getElementById("threeD-dot-bThree-in"),
-    solution: document.getElementById("threeD-dot-out")
-  },
-  btnConfig: {
-    calcBtn: document.getElementById("threeD-dot-calc-btn"),
-    rstBtn: document.getElementById("threeD-dot-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.threeSpaceDotCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        a3 = Number(io.aThreeIn.value),
-        b1 = Number(io.bOneIn.value),
-        b2 = Number(io.bTwoIn.value),
-        b3 = Number(io.bThreeIn.value);
-    var solution = io.solution;
-    solution.value = (a1 * b1) + (a2 * b2) + (a3 * b3);
-  },
-  resetIO: function() {
-    VECTORS.threeSpaceDotCalc.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
-  }
-}
+  var twoSpaceDotCalculator =  calculators.twoSpaceDotCalculator;
+
+  VECTORS.twoSpaceDotCalc = new VectorCalculator(
+    twoSpaceDotConfig, twoSpaceDotCalculator
+  );
+})(VECTORS);
+
+(function(VECTORS) {
+  var threeSpaceDotConfig = {
+    io: {
+      form: document.getElementById("threeD-dot-calc"),
+      aOneIn: document.getElementById("threeD-dot-aOne-in"),
+      aTwoIn: document.getElementById("threeD-dot-aTwo-in"), 
+      aThreeIn: document.getElementById("threeD-dot-aThree-in"),
+      bOneIn: document.getElementById("threeD-dot-bOne-in"),
+      bTwoIn: document.getElementById("threeD-dot-bTwo-in"),
+      bThreeIn: document.getElementById("threeD-dot-bThree-in"),
+      solution: document.getElementById("threeD-dot-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("threeD-dot-calc-btn"),
+      rstBtn: document.getElementById("threeD-dot-rst-btn")
+    }
+  };
+
+  var threeSpaceDotCalculator = calculators.threeSpaceDotCalculator;
+
+  VECTORS.threeSpaceDotCalc = new VectorCalculator(
+    threeSpaceDotConfig, threeSpaceDotCalculator
+  );
+})(VECTORS);
 
 /**
  *
@@ -712,55 +703,33 @@ VECTORS.threeSpaceDotCalc = {
  *
  */
 
-VECTORS.crossProductCalc = {
-  ioConfig: {
-    form: document.getElementById("threeD-cross-calc"),
-    aOneIn: document.getElementById("cross-aOne-in"),
-    aTwoIn: document.getElementById("cross-aTwo-in"), 
-    aThreeIn: document.getElementById("cross-aThree-in"),
-    bOneIn: document.getElementById("cross-bOne-in"),
-    bTwoIn: document.getElementById("cross-bTwo-in"),
-    bThreeIn: document.getElementById("cross-bThree-in"),
-    solOneOut: document.getElementById("cross-solOne-out"),
-    solTwoOut: document.getElementById("cross-solTwo-out"),
-    solThreeOut: document.getElementById("cross-solThree-out")
-  },
-  btnConfig: {
-    calcBtn: document.getElementById("cross-calc-btn"),
-    rstBtn: document.getElementById("cross-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.crossProductCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        a3 = Number(io.aThreeIn.value),
-        b1 = Number(io.bOneIn.value),
-        b2 = Number(io.bTwoIn.value),
-        b3 = Number(io.bThreeIn.value);
-    var solOne = io.solOneOut,
-        solTwo = io.solTwoOut,
-        solThree = io.solThreeOut;
-    solOne.value = (a2 * b3) - (a3 * b2);
-    solTwo.value = (a3 * b1) - (a1 * b3);
-    solThree.value = (a1 * b2) - (a2 * b1);
-  },
-  resetIO: function() {
-    VECTORS.crossProductCalc.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
-  }
-}
+(function(VECTORS) {
+  var crossProductConfig = {
+    io: {
+      form: document.getElementById("threeD-cross-calc"),
+      aOneIn: document.getElementById("cross-aOne-in"),
+      aTwoIn: document.getElementById("cross-aTwo-in"), 
+      aThreeIn: document.getElementById("cross-aThree-in"),
+      bOneIn: document.getElementById("cross-bOne-in"),
+      bTwoIn: document.getElementById("cross-bTwo-in"),
+      bThreeIn: document.getElementById("cross-bThree-in"),
+      solOneOut: document.getElementById("cross-solOne-out"),
+      solTwoOut: document.getElementById("cross-solTwo-out"),
+      solThreeOut: document.getElementById("cross-solThree-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("cross-calc-btn"),
+      rstBtn: document.getElementById("cross-rst-btn")
+    }
+  };
+
+  var crossProductCalculator = calculators.crossProductCalculator;
+
+  VECTORS.crossProductCalc = new VectorCalculator(
+    crossProductConfig, crossProductCalculator
+  );
+})(VECTORS);
+
 
 /**
  *
@@ -768,96 +737,53 @@ VECTORS.crossProductCalc = {
  *
  */
 
-VECTORS.twoSpaceAngleCalc = {
-  ioConfig: {
-    form: document.getElementById("twoD-angle-calc"),
-    aOneIn: document.getElementById("twoD-angle-aOne-in"),
-    aTwoIn: document.getElementById("twoD-angle-aTwo-in"), 
-    bOneIn: document.getElementById("twoD-angle-bOne-in"),
-    bTwoIn: document.getElementById("twoD-angle-bTwo-in"),
-    theta: document.getElementById("twoD-angle-sol-out")
-  },
-  btnConfig: {
-    calcBtn: document.getElementById("twoD-angle-calc-btn"),
-    rstBtn: document.getElementById("twoD-angle-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.twoSpaceAngleCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        b1 = Number(io.bOneIn.value),
-        b2 = Number(io.bTwoIn.value);
-    var theta = io.theta;
-    var dot = (a1 * b1) + (a2 * b2),
-        magA = Math.sqrt(Math.pow(a1, 2) + Math.pow(a2, 2)),
-        magB = Math.sqrt(Math.pow(b1, 2) + Math.pow(b2, 2));
-    theta.value = Math.acos(dot/(magA * magB));
-  },
-  resetIO: function() {
-    VECTORS.twoSpaceAngleCalc.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
-  }
-}
+(function(VECTORS) {
+  var twoSpaceAngleConfig = {
+    io: {
+      form: document.getElementById("twoD-angle-calc"),
+      aOneIn: document.getElementById("twoD-angle-aOne-in"),
+      aTwoIn: document.getElementById("twoD-angle-aTwo-in"), 
+      bOneIn: document.getElementById("twoD-angle-bOne-in"),
+      bTwoIn: document.getElementById("twoD-angle-bTwo-in"),
+      theta: document.getElementById("twoD-angle-sol-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("twoD-angle-calc-btn"),
+      rstBtn: document.getElementById("twoD-angle-rst-btn")
+    }
+  };
 
-VECTORS.threeSpaceAngleCalc = {
-  ioConfig: {
-    form: document.getElementById("threeD-angle-calc"),
-    aOneIn: document.getElementById("threeD-angle-aOne-in"),
-    aTwoIn: document.getElementById("threeD-angle-aTwo-in"), 
-    aThreeIn: document.getElementById("threeD-angle-aThree-in"),
-    bOneIn: document.getElementById("threeD-angle-bOne-in"),
-    bTwoIn: document.getElementById("threeD-angle-bTwo-in"),
-    bThreeIn: document.getElementById("threeD-angle-bThree-in"),
-    theta: document.getElementById("threeD-angle-sol-out")
-  },
-  btnConfig: {
-    calcBtn: document.getElementById("threeD-angle-calc-btn"),
-    rstBtn: document.getElementById("threeD-angle-rst-btn")
-  },
-  calculation: function() {
-    var io = VECTORS.threeSpaceAngleCalc.ioConfig;
-    var a1 = Number(io.aOneIn.value),
-        a2 = Number(io.aTwoIn.value),
-        a3 = Number(io.aThreeIn.value),
-        b1 = Number(io.bOneIn.value),
-        b2 = Number(io.bTwoIn.value),
-        b3 = Number(io.bThreeIn.value);
-    var theta = io.theta;
-    var dot = (a1 * b1) + (a2 * b2) + (a3 * b3),
-        magA = Math.sqrt(Math.pow(a1, 2) + Math.pow(a2, 2) + Math.pow(a3, 2)),
-        magB = Math.sqrt(Math.pow(b1, 2) + Math.pow(b2, 2) + Math.pow(b3, 2));
-    theta.value = Math.acos(dot/(magA * magB));
-  },
-  resetIO: function() {
-    VECTORS.threeSpaceAngleCalc.ioConfig.form.reset();
-  },
-  clickActions: function() {
-    var calcBtn = this.btnConfig.calcBtn,
-        rstBtn = this.btnConfig.rstBtn,
-        calculate = this.calculation,
-        reset = this.resetIO;
-    return {
-      calculate: calcBtn.onclick = calculate,
-      resetForm: rstBtn.onclick = reset 
-    };
-  },
-  run: function() {
-    this.clickActions();
-  }
-}
+  var twoSpaceAngleCalculator = calculators.twoSpaceAngleCalculator;
 
+  VECTORS.twoSpaceAngleCalc = new VectorCalculator(
+    twoSpaceAngleConfig, twoSpaceAngleCalculator
+  );
+})(VECTORS);
+
+(function(VECTORS) {
+  var threeSpaceAngleConfig = {
+    io: {
+      form: document.getElementById("threeD-angle-calc"),
+      aOneIn: document.getElementById("threeD-angle-aOne-in"),
+      aTwoIn: document.getElementById("threeD-angle-aTwo-in"), 
+      aThreeIn: document.getElementById("threeD-angle-aThree-in"),
+      bOneIn: document.getElementById("threeD-angle-bOne-in"),
+      bTwoIn: document.getElementById("threeD-angle-bTwo-in"),
+      bThreeIn: document.getElementById("threeD-angle-bThree-in"),
+      theta: document.getElementById("threeD-angle-sol-out")
+    },
+    btn: {
+      calcBtn: document.getElementById("threeD-angle-calc-btn"),
+      rstBtn: document.getElementById("threeD-angle-rst-btn")
+    }
+  };
+
+  var threeSpaceAngleCalculator = calculators.threeSpaceAngleCalculator;
+
+  VECTORS.threeSpaceAngleCalc = new VectorCalculator(
+    threeSpaceAngleConfig, threeSpaceAngleCalculator
+  );
+})(VECTORS);
 
 /**
  *
@@ -879,8 +805,8 @@ VECTORS.twoSpaceVecSubCalc.run();
 VECTORS.threeSpaceVecSubCalc.run();
 VECTORS.twoSpaceScalMultCalc.run();
 VECTORS.threeSpaceScalMultCalc.run();
-debugger
 VECTORS.twoSpaceMagCalc.run();
+VECTORS.threeSpaceMagCalc.run();
 VECTORS.twoSpaceDotCalc.run();
 VECTORS.threeSpaceDotCalc.run();
 VECTORS.crossProductCalc.run();
