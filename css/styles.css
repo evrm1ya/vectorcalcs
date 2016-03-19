@@ -747,6 +747,12 @@ a {
       );
   }
 
+  .l-features {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   .l-code {
     display: block;
     width: 100%;
@@ -989,8 +995,8 @@ a {
     padding: 0;
     display: inline-block;
     float: left;
-    margin-left: 6.25%;
     min-height: 18em;
+    width: 30%;
   }
 
   [class*="m-feature-col"] header {
