@@ -708,11 +708,11 @@ a {
 
 
   .l-workspace-col-11 {
-    display: inline-block;
+    display: flex;
     overflow: auto;
     position: relative;
     min-height: 80em;
-    margin: 2em 0 4.166% 2em;
+    margin: 60px auto;
     box-shadow: 0 0 15px 1px #333;
     background-color: #fff;
     background-image:
@@ -882,6 +882,7 @@ a {
 /* @current */
   [class*="m-dsktp-instruct-win"] {
     display: inline-block;
+    height: 240px;
     margin-top: 5.9em;
     float: left;
     border: .2em solid #333;
