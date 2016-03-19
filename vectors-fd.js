@@ -287,7 +287,7 @@ var calculators = (function() {
   }
 
   return {
-    twoSpaceVecAddCalculator() {
+    twoSpaceVecAddCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -297,7 +297,7 @@ var calculators = (function() {
       io.solOneOut.value = vals[0] + vals[2];
       io.solTwoOut.value = vals[1] + vals[3];
     },
-    threeSpaceVecAddCalculator() {
+    threeSpaceVecAddCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -310,7 +310,7 @@ var calculators = (function() {
       io.solTwoOut.value = vals[1] + vals[4];
       io.solThreeOut.value = vals[2] + vals[5];
     },
-    twoSpaceVecSubCalculator(inArray) {
+    twoSpaceVecSubCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -320,7 +320,7 @@ var calculators = (function() {
       io.solOneOut.value = vals[0] - vals[2];
       io.solTwoOut.value = vals[1] - vals[3];
     },
-    threeSpaceVecSubCalculator(inArray) {
+    threeSpaceVecSubCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -333,7 +333,7 @@ var calculators = (function() {
       io.solTwoOut.value = vals[1] - vals[4];
       io.solThreeOut.value = vals[2] - vals[5];
     },
-    twoSpaceScalarMultCalculator() {
+    twoSpaceScalarMultCalculator: function() {
       var io = this._config.io;
       var c = io.scalar.value,
           a1 = io.aOneIn.value,
@@ -342,7 +342,7 @@ var calculators = (function() {
       io.solOneOut.value = vals[0] * vals[1];
       io.solTwoOut.value = vals[0] * vals[2];
     },
-    threeSpaceScalarMultCalculator() {
+    threeSpaceScalarMultCalculator: function() {
       var io = this._config.io;
       var c = io.scalar.value,
           a1 = io.aOneIn.value,
@@ -353,14 +353,14 @@ var calculators = (function() {
       io.solTwoOut.value = vals[0] * vals[2];
       io.solThreeOut.value = vals[0] * vals[3];
     },
-    twoSpaceMagCalculator() {
+    twoSpaceMagCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value;
       var vals = convertInputArray([a1, a2]);
       io.solution.value = Math.sqrt(Math.pow(vals[0], 2) + Math.pow(vals[1], 2));
     },
-    threeSpaceMagCalculator() {
+    threeSpaceMagCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -368,7 +368,7 @@ var calculators = (function() {
       var vals = convertInputArray([a1, a2, a3]);
       io.solution.value = Math.sqrt(Math.pow(vals[0], 2) + Math.pow(vals[1], 2) + Math.pow(vals[2], 2));
     },
-    twoSpaceDotCalculator() {
+    twoSpaceDotCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -377,7 +377,7 @@ var calculators = (function() {
       var vals = convertInputArray([a1, a2, b1, b2]);
       io.solution.value = (vals[0] * vals[2]) + (vals[1] * vals[3]);
     },
-    threeSpaceDotCalculator() {
+    threeSpaceDotCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -388,7 +388,7 @@ var calculators = (function() {
       var vals = convertInputArray([a1, a2, a3, b1, b2, b3]);
       io.solution.value = (vals[0] * vals[3]) + (vals[1] * vals[4]) + (vals[2] * vals[5]);
     },
-    crossProductCalculator() {
+    crossProductCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -401,7 +401,7 @@ var calculators = (function() {
       io.solTwoOut.value = (vals[2] * vals[3]) - (vals[0] * vals[5]);
       io.solThreeOut.value = (vals[0] * vals[4]) - (vals[1] * vals[3]);
     },
-    twoSpaceAngleCalculator() {
+    twoSpaceAngleCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -413,7 +413,7 @@ var calculators = (function() {
           magB = Math.sqrt(Math.pow(vals[2], 2) + Math.pow(vals[3], 2));
       io.theta.value = Math.acos(dot/(magA * magB));
     },
-    threeSpaceAngleCalculator() {
+    threeSpaceAngleCalculator: function() {
       var io = this._config.io;
       var a1 = io.aOneIn.value,
           a2 = io.aTwoIn.value,
@@ -534,9 +534,7 @@ var calculators = (function() {
 
   var threeSpaceVecSubCalculator = calculators.threeSpaceVecSubCalculator;
 
-  VECTORS.threeSpaceVecSubCalc = new VectorCalculator(
-    threeSpaceVecSubCalcConfig, threeSpaceVecSubCalculator
-  );
+  VECTORS.threeSpaceVecSubCalc = new VectorCalculator(threeSpaceVecSubCalcConfig, threeSpaceVecSubCalculator);
 })(VECTORS);
 
 /**
@@ -563,9 +561,7 @@ var calculators = (function() {
 
   var twoSpaceScalMultCalculator = calculators.twoSpaceScalarMultCalculator;
 
-  VECTORS.twoSpaceScalMultCalc = new VectorCalculator(
-    twoSpcScalMultConfig, twoSpaceScalMultCalculator
-  );
+  VECTORS.twoSpaceScalMultCalc = new VectorCalculator(twoSpcScalMultConfig, twoSpaceScalMultCalculator);
 })(VECTORS);
 
 (function(VECTORS) {
@@ -588,9 +584,7 @@ var calculators = (function() {
 
   var threeSpaceScalarMultCalculator = calculators.threeSpaceScalarMultCalculator;
 
-  VECTORS.threeSpaceScalMultCalc = new VectorCalculator(
-    threeSpaceScalMultConfig, threeSpaceScalarMultCalculator
-  );
+  VECTORS.threeSpaceScalMultCalc = new VectorCalculator(threeSpaceScalMultConfig, threeSpaceScalarMultCalculator);
 })(VECTORS);
 
 /**
@@ -615,9 +609,7 @@ var calculators = (function() {
 
   var twoSpaceMagCalculator = calculators.twoSpaceMagCalculator;
 
-  VECTORS.twoSpaceMagCalc = new VectorCalculator(
-    twoSpaceMagConfig, twoSpaceMagCalculator
-  );
+  VECTORS.twoSpaceMagCalc = new VectorCalculator(twoSpaceMagConfig, twoSpaceMagCalculator);
 })(VECTORS);
 
 (function(VECTORS) {
@@ -637,9 +629,7 @@ var calculators = (function() {
 
   var threeSpaceMagCalculator = calculators.threeSpaceMagCalculator;
 
-  VECTORS.threeSpaceMagCalc = new VectorCalculator(
-    threeSpaceMagConfig, threeSpaceMagCalculator
-  );
+  VECTORS.threeSpaceMagCalc = new VectorCalculator(threeSpaceMagConfig, threeSpaceMagCalculator);
 })(VECTORS);
 
 
@@ -667,9 +657,7 @@ var calculators = (function() {
 
   var twoSpaceDotCalculator =  calculators.twoSpaceDotCalculator;
 
-  VECTORS.twoSpaceDotCalc = new VectorCalculator(
-    twoSpaceDotConfig, twoSpaceDotCalculator
-  );
+  VECTORS.twoSpaceDotCalc = new VectorCalculator(twoSpaceDotConfig, twoSpaceDotCalculator);
 })(VECTORS);
 
 (function(VECTORS) {
@@ -692,9 +680,7 @@ var calculators = (function() {
 
   var threeSpaceDotCalculator = calculators.threeSpaceDotCalculator;
 
-  VECTORS.threeSpaceDotCalc = new VectorCalculator(
-    threeSpaceDotConfig, threeSpaceDotCalculator
-  );
+  VECTORS.threeSpaceDotCalc = new VectorCalculator(threeSpaceDotConfig, threeSpaceDotCalculator);
 })(VECTORS);
 
 /**
@@ -725,9 +711,7 @@ var calculators = (function() {
 
   var crossProductCalculator = calculators.crossProductCalculator;
 
-  VECTORS.crossProductCalc = new VectorCalculator(
-    crossProductConfig, crossProductCalculator
-  );
+  VECTORS.crossProductCalc = new VectorCalculator(crossProductConfig, crossProductCalculator);
 })(VECTORS);
 
 
@@ -755,9 +739,7 @@ var calculators = (function() {
 
   var twoSpaceAngleCalculator = calculators.twoSpaceAngleCalculator;
 
-  VECTORS.twoSpaceAngleCalc = new VectorCalculator(
-    twoSpaceAngleConfig, twoSpaceAngleCalculator
-  );
+  VECTORS.twoSpaceAngleCalc = new VectorCalculator(twoSpaceAngleConfig, twoSpaceAngleCalculator);
 })(VECTORS);
 
 (function(VECTORS) {
@@ -780,9 +762,7 @@ var calculators = (function() {
 
   var threeSpaceAngleCalculator = calculators.threeSpaceAngleCalculator;
 
-  VECTORS.threeSpaceAngleCalc = new VectorCalculator(
-    threeSpaceAngleConfig, threeSpaceAngleCalculator
-  );
+  VECTORS.threeSpaceAngleCalc = new VectorCalculator(threeSpaceAngleConfig, threeSpaceAngleCalculator);
 })(VECTORS);
 
 /**
