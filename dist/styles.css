@@ -348,7 +348,7 @@ a {
 }
 
 .m-calc-content-win input[type=number] {
-  width: 4em;
+  width: 3.4em;
   text-align: center;
   margin-top: 1em;
   padding: 1px;
@@ -383,7 +383,8 @@ a {
 }
   
 .m-calc-content-win input[type=text] {
-  width: 4em;
+  width: 3.4em;
+  font-size: 16px;
   text-align: center;
   margin-top: 1em;
   padding: 1px;
@@ -1051,6 +1052,10 @@ a {
 
   .m-def-win footer > a:hover {
     background-color: #5e5e5e;
+  }
+
+  .m-calc-content-win input[type=text] {
+    font-size: 12px;
   }
 
   .m-calc-content-win .m-calc-btn-orange:hover {
